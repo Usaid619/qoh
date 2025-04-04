@@ -40,10 +40,10 @@ const Recommendation = () => {
   return (
     <section className=" flex flex-col gap-4 w-full font-gothic  font-light " aria-label="Jewelry Recommendations">
       <div className="flex flex-col gap-4 items-center justify-center">
-           <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium">
+           <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium  text-center">
           Browse by Recommendation
         </h2>
-        <span className="capitalize text-[16px] md:text-[20px]">Handpicked Favourites, Just For you!</span>
+        <span className="capitalize text-[16px] md:text-[20px]  text-center">Handpicked Favourites, Just For you!</span>
         </div>
       
       <div className=" relative w-full">

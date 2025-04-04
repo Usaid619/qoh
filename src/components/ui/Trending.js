@@ -5,7 +5,7 @@ const Trending = () => {
   return (
     <div className='relative flex flex-col lg:flex-row items-center justify-center lg:gap-36 gap-5 px-6 py-10 w-full'>
 
-<h1 className='lg:hidden uppercase text-2xl lg:text-4xl tracking-wide font-medium'>
+<h1 className='lg:hidden uppercase text-2xl lg:text-4xl tracking-wide font-medium  text-center'>
           what&apos;s trending?
         </h1>
       {/* Left Image Section */}
@@ -16,7 +16,7 @@ const Trending = () => {
           className='object-cover w-[430px] h-[490px] rounded-sm'
         />
         <img
-        className='lg:block hidden absolute top-[40%] -translate-y-1/2 left-[70%] w-[288px] h-[306px]  rotate-6'
+        className='lg:block hidden absolute top-[40%] -translate-y-1/2 left-[70%] w-[288px] h-[306px] border border-black rotate-6'
         src='/assets/images/ring.png'
         alt='Floating ring'
       />

@@ -88,14 +88,14 @@ const Styles = () => {
     <section className="w-full ">
       <div className="font-gothic flex flex-col gap-4 py-4 w-full  font-light p-3 md:p-6 " aria-label="Recommendations">
         <div className="flex flex-col gap-4 items-center justify-center">
-           <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium">
+           <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">
           Browse by Style
         </h2>
-        <span className="capitalize text-[16px] md:text-[20px]">Timeless classics to modern trends. All in one piece!</span>
+        <span className=" text-[16px] md:text-[20px] text-center">Timeless classics to modern trends. All in one piece!</span>
         </div>
        
 
-        <div className="flex items-center justify-center relative w-full px-10 ">
+        <div className="flex items-center justify-center relative w-full px-10 border border-red-400">
       {/* Navigation Arrows */}
       <button
   onClick={handlePrev}
