@@ -9,6 +9,7 @@ export default {
     extend: {
       fontFamily: {
         gothic: "var(--font-gothic)",
+        bigilla: "var(--font-bigilla)",
       },
       gridTemplateColumns: {
         hallmark: "repeat(3, minmax(20px, 1fr))",

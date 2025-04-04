@@ -95,7 +95,7 @@ const Styles = () => {
         </div>
        
 
-        <div className="flex items-center justify-center relative w-full px-10 border border-red-400">
+        <div className="flex items-center justify-center relative w-full px-10">
       {/* Navigation Arrows */}
       <button
   onClick={handlePrev}

@@ -16,7 +16,7 @@ const Trending = () => {
           className='object-cover w-[430px] h-[490px] rounded-sm'
         />
         <img
-        className='lg:block hidden absolute top-[40%] -translate-y-1/2 left-[70%] w-[288px] h-[306px] border border-black rotate-6'
+        className='lg:block hidden absolute top-[40%] -translate-y-1/2 left-[70%] w-[288px] h-[306px] rotate-6'
         src='/assets/images/ring.png'
         alt='Floating ring'
       />
@@ -41,7 +41,6 @@ const Trending = () => {
         alt='Floating ring'
       />
         </div>
-       
       </div>
     </div>
   )
