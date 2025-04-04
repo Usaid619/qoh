@@ -1,8 +1,11 @@
+import BrandsPromise from '@/components/ui/BrandsPromise'
+import BrandStore from '@/components/ui/BrandStore'
 import BrowseByCategories from '@/components/ui/BrowseByCategories'
 import Hallmarks from '@/components/ui/Hallmarks'
 import HeroSection from '@/components/ui/HeroSection'
 import Pitch from '@/components/ui/Pitch'
 import Recommendation from '@/components/ui/Recommendation'
+import ShoppingBenifit from '@/components/ui/ShoppingBenifit'
 import Styles from '@/components/ui/Styles'
 import Trending from '@/components/ui/Trending'
 import React from 'react'
@@ -18,9 +21,9 @@ const page = () => {
       <Recommendation/>
       <Trending/>
       {/* What's Trending */}
-      {/* Benefits */}
-      {/* Promise Carousel */}
-      {/* Store */}
+      <ShoppingBenifit/>
+      <BrandsPromise/>
+      <BrandStore/>
       {/* Testimonials */}
       {/* Footer */}
     </div>
