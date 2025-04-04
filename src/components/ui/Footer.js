@@ -3,11 +3,9 @@ import React, { useState } from "react";
 import Link from "next/link";
 // import TermsAndConditions from '../../app/gulz/Terms-and-Conditions';
 // import PrivacyPolicy from '../../app/gulz/Privacy-Policy';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-// import { faInstagram, faFacebookF, faYoutube, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { faInstagram, faPinterestP, faFacebookF, faXTwitter } from "@fortawesome/free-brands-svg-icons";
-import { usePathname } from "next/navigation";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInstagram, faPinterestP, faFacebookF, faXTwitter } from "@fortawesome/free-brands-svg-icons"
+import { usePathname } from "next/navigation"
 
 const Footer = () => {
   const [showTerms, setShowTerms] = useState(false);
@@ -77,7 +75,7 @@ const Footer = () => {
             <h1 className="text-lg sm:text-xl 3xl:text-2xl md:text-[1.1rem]  tracking-normal sm:tracking-widest font-semibold mb-2">
               Contact Us             
             </h1>
-            <div className="flex flex-col  items-center md:items-start gap-5">
+            <div className="flex flex-col  items-center md:items-start gap-2">
               <div className="flex gap-1 items-center">
                 {/* <FontAwesomeIcon icon={faPhone} className="text-sm 3xl:text-2xl  sm:text-base " /> */}
                 <p className=" text-sm sm:text-[0.9rem] 3xl:text-2xl "><a href="tel:+919884039111"><span>Call Us: </span>+91 9884039111</a></p>
@@ -107,7 +105,7 @@ const Footer = () => {
             <h1 className="text-lg sm:text-xl md:text-[1.1rem] 3xl:text-2xl tracking-normal sm:tracking-widest font-semibold mb-1">
               Store Address               
             </h1>
-            <div className="flex flex-col md:items-start items-center gap-3">
+            <div className="flex flex-col md:items-start items-center gap-2">
               <div className="md:flex text-center gap-1 items-center">
              
               </div>
@@ -115,7 +113,17 @@ const Footer = () => {
                 No: 53/2, C.P. Ramaswamy Road, Abiramapuram,Chennai, Tamil Nadu
                 600018
               </p>
-              <Link href="https://www.google.com/search?q=khwaahish%20diamonds" target="_blank" rel="noopener noreferrer" className=" text-sm sm:text-[0.95rem] cursor-pointer border-b-transparent 3xl:text-xl transition-all duration-300 hover:border-b-[1px] hover:border-[#663634]">Show in Google Maps</Link>
+              <Link
+                  href="https://www.google.com/search?q=khwaahish%20diamonds"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative group text-sm sm:text-[0.95rem] cursor-pointer 3xl:text-xl"
+                >
+                  <span className="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-[#fff] after:transition-all after:duration-300 group-hover:after:w-full">
+                    Show in Google Maps
+                  </span>
+                </Link>
+
             </div>
           </div>
           {/* Quick Links */}  
@@ -125,41 +133,51 @@ const Footer = () => {
             </h1>
             <div className="flex flex-col items-center md:items-start gap-3">
               <p          
-                className=" text-sm sm:text-[0.9rem] 3xl:text-xl cursor-pointer hover:underline"
+                className=" text-sm sm:text-[0.9rem] 3xl:text-xl cursor-pointer relative group"
               >
+                <span className="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 group-hover:after:w-full">
                 Blog
+  </span>
               </p>
               <p 
-                className=" text-sm sm:text-[0.9rem]  3xl:text-xl cursor-pointer hover:underline"
+                className=" text-sm sm:text-[0.9rem]  3xl:text-xl cursor-pointer relative group"
                
               >
+                <span className="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 group-hover:after:w-full">
                 Our Story
+  </span>
               </p>
               <p          
-                className=" text-sm sm:text-[0.9rem] 3xl:text-xl cursor-pointer hover:underline"
+                className=" text-sm sm:text-[0.9rem] 3xl:text-xl cursor-pointer relative group"
                 onClick={() => setShowPrivacy(true)}
               >
-                Privacy Policy
+               <span className="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 group-hover:after:w-full">
+               Privacy Policy
+  </span>
               </p>
               <p 
-                className=" text-sm sm:text-[0.9rem]  3xl:text-xl cursor-pointer hover:underline"
+                className=" text-sm sm:text-[0.9rem]  3xl:text-xl cursor-pointer relative group"
               >
-                Contact Us
+                 <span className="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 group-hover:after:w-full">
+                 Contact Us
+  </span>
               </p>
-              <p 
-                className=" text-sm sm:text-[0.9rem]  3xl:text-xl cursor-pointer hover:underline"
-                onClick={() => setShowTerms(true)}
-              >
-                Terms & Conditions
-              </p>
+              <p
+  className="text-sm sm:text-[0.9rem] 3xl:text-xl cursor-pointer relative group"
+  onClick={() => setShowTerms(true)}
+>
+  <span className="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 group-hover:after:w-full">
+    Terms & Conditions
+  </span>
+</p>
             </div>
           </div>
         </div>
         <div className="w-full flex flex-row items-center my-10 justify-center gap-10">
-      <FontAwesomeIcon icon={faXTwitter} className=" bg-white rounded-full text-black p-2.5 text-[16px]" />
-      <FontAwesomeIcon icon={faPinterestP} className=" bg-white rounded-full text-black p-2.5 px-3 text-[16px]"  />
-      <FontAwesomeIcon icon={faInstagram} className=" bg-white rounded-full text-black p-2.5 text-[16px]" />
-      <FontAwesomeIcon icon={faFacebookF} className=" bg-white rounded-full text-black p-2.5 px-3 text-[16px]" />
+      <FontAwesomeIcon icon={faXTwitter} width={20} className=" bg-white rounded-full text-black p-3 text-[16px]" />
+      <FontAwesomeIcon icon={faPinterestP} width={20} className=" bg-white rounded-full text-black p-3 text-[16px]"  />
+      <FontAwesomeIcon icon={faInstagram} width={20} className=" bg-white rounded-full text-black p-3 text-[16px]" />
+      <FontAwesomeIcon icon={faFacebookF} width={20} className=" bg-white rounded-full text-black  p-3 text-[16px]" />
         </div>
       </div>
       <div className = "w-[85%]  mx-auto min-h-[15vh] sm:h-[20vh] flex flex-col md:my-6 lg:my-0 lg:flex-row justify-center sm:justify-between items-center gap-4 sm:gap-0 py-4">
@@ -177,8 +195,7 @@ const Footer = () => {
         </div>
         
       </div>
-      {/* {showTerms && <TermsAndConditions onClose={() => setShowTerms(false)} />}
-      {showPrivacy && <PrivacyPolicy onClose={() => setShowPrivacy(false)} />} */}
+    
     </div>
   );
 };

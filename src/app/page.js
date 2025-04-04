@@ -10,6 +10,7 @@ import Styles from '@/components/ui/Styles'
 import Trending from '@/components/ui/Trending'
 import React from 'react'
 import Footer from '@/components/ui/Footer'
+import Testimonial from '@/components/ui/Testimonial'
 
 const page = () => {
   return (
@@ -25,7 +26,7 @@ const page = () => {
       <ShoppingBenifit/>
       <BrandsPromise/>
       <BrandStore/>
-      {/* Testimonials */}
+      <Testimonial/>
       {/* Footer */}
       <Footer/>
     </div>
