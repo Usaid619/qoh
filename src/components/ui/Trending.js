@@ -31,9 +31,11 @@ const Trending = () => {
           Find your wardrobe essential or a new everyday favourite with our array of diamond rings. From classic styles to trendy designs, to dazzling ones and minimalist ones for understated elegance, you will find many to suit your signature style.
         </span>
         <div className='flex justify-center lg:justify-end w-full relative'>
-           <button className='lg:mt-12 uppercase text-[16px] border border-gray-300 tracking-wider py-4 px-28  transition-colors duration-300 hover:bg-black hover:text-white'>
-          Explore
-        </button>
+        <button className="relative overflow-hidden group lg:mt-12 uppercase text-[16px] border border-gray-300 tracking-wider py-4 px-28">
+  <span className="absolute inset-0 translate-y-full bg-black group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0"></span>
+  <span className="relative z-10 text-gray-800 group-hover:text-white transition-colors duration-500">Explore</span>
+</button>
+
         {/* Floating Ring Image */}
       <img
         className='lg:hidden block absolute top-1/2 -translate-y-1/2 right-2 h-[86px] w-[86px] lg:w-[288px] lg:h-[306px] rotate-1'

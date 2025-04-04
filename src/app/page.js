@@ -9,6 +9,7 @@ import ShoppingBenifit from '@/components/ui/ShoppingBenifit'
 import Styles from '@/components/ui/Styles'
 import Trending from '@/components/ui/Trending'
 import React from 'react'
+import Testimonial from '@/components/ui/Testimonial'
 
 const page = () => {
   return (
@@ -20,11 +21,10 @@ const page = () => {
       <Styles/>
       <Recommendation/>
       <Trending/>
-      {/* What's Trending */}
       <ShoppingBenifit/>
       <BrandsPromise/>
       <BrandStore/>
-      {/* Testimonials */}
+      <Testimonial/>
     </div>
   )
 }
