@@ -67,7 +67,7 @@ const Styles = () => {
       let obj = {url:"/assets/bracelet/All-Bracelets.avif",name:"All Bracelets"}
       return obj
     }else if(name?.includes("necklace")){
-      let obj = {url:"/assets/necklaces/All-Necklaces.avif",name:"All ecklaces"}
+      let obj = {url:"/assets/necklaces/All-Necklaces.avif",name:"All Necklaces"}
       return obj
     }else if(name?.includes("ring")){
       let obj = {url:"/assets/rings/All-Rings.avif",name:"All Rings"}
@@ -91,7 +91,7 @@ const Styles = () => {
            <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">
           Browse by Style
         </h2>
-        <span className=" text-[16px] md:text-[20px] text-center">Timeless classics to modern trends. All in one piece!</span>
+        <span className="text-[16px] text-center">Timeless classics to modern trends - All in one place!</span>
         </div>
        
 
@@ -141,35 +141,73 @@ const Styles = () => {
       </div>
     </div>
 
-        <div className={`${pathName=== '/' ? 'bg-[#F9F9F9] border border-gray-400' : 'bg-[#fbf6f5] border border-amber-950'} w-full p-4 bg-#f9f4f3 rounded-2xl relative left-1/2 -translate-x-1/2 mt-2 overflow-hidden shadow-[inset_0_0px_30px_rgba(0,0,0,0.2)]`} role="tabpanel" id={`${activeButton}-panel`} aria-label={`${activeButton} styles carousel`}>
-          <div className="embla hover:cursor-pointer active:cursor-grabbing" ref={emblaRef}>
-            <div className="embla__container  flex items-center">
-              <div className={` ${getAllStyleData()?.url?"":"hidden"} min-w-0 px-8`}>
-                <Link href={`/${activeData?.name?.toLowerCase().replaceAll(" ", "-")}`}>
-                  <div className="flex flex-col justify-center items-center gap-2">
-                    <div className="relative w-20 h-20  md:w-28 md:h-28">
-                      <Image src={getAllStyleData()?.url || "/"} alt={`All ${activeData?.name}`} fill sizes="(max-width: 768px) 80px, 112px" className="rounded-full object-cover" draggable="false" />
-                    </div>
-                    <p className="uppercase text-center  text-xs md:text-sm tracking-[0.4em] text-amber-950">{getAllStyleData()?.name}</p>
-                  </div>
-                </Link>
-              </div>
-              {activeData &&
-                activeData?.styles?.map((item, index) => (
-                  <div key={index} className="flex flex-[0_0_20%] min-w-0 px-8">
-                    <Link href={`/${activeData?.name?.toLowerCase().replaceAll(" ", "-")}?style=${item.name?.toLowerCase().replaceAll(" ", "-")}`}>
-                      <div className="flex flex-col justify-center items-center gap-2 ">
-                        <div className="relative w-20 h-20  md:w-28 md:h-28">
-                          <Image src={item.image?.url || "/"} alt={item.name} fill sizes="(max-width: 768px) 80px, 112px" className="rounded-full object-cover" draggable="false" />
-                        </div>
-                        <p className="uppercase text-center  text-xs md:text-sm tracking-[0.4em] text-amber-950">{item.name}</p>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
+    <div
+  className={`${
+    pathName === '/'
+      ? 'bg-[#F9F9F9] border border-gray-400'
+      : 'bg-[#fbf6f5] border border-amber-950'
+  } w-full p-4 rounded-2xl relative left-1/2 -translate-x-1/2 mt-2 overflow-hidden shadow-[inset_0_0_30px_rgba(0,0,0,0.2)]`}
+  role="tabpanel"
+  id={`${activeButton}-panel`}
+  aria-label={`${activeButton} styles carousel`}
+>
+  <div className="embla hover:cursor-pointer active:cursor-grabbing" ref={emblaRef}>
+    <div className="flex items-center gap-8 px-6">
+      {/* 'All' Item */}
+      {getAllStyleData()?.url && (
+        <div className="flex-shrink-0">
+          <Link
+            href={`/${activeData?.name?.toLowerCase().replaceAll(' ', '-')}`}
+            className="flex flex-col items-center gap-2 px-4"
+          >
+            <div className="relative w-20 h-20 md:w-28 md:h-28">
+              <Image
+                src={getAllStyleData()?.url || '/'}
+                alt={`All ${activeData?.name}`}
+                fill
+                sizes="(max-width: 768px) 80px, 112px"
+                className="rounded-full object-cover"
+                draggable="false"
+              />
             </div>
-          </div>
+            <p className="uppercase text-center text-xs md:text-sm tracking-[0.4em] text-amber-950 whitespace-nowrap">
+              {getAllStyleData()?.name}
+            </p>
+          </Link>
         </div>
+      )}
+
+      {/* Individual Style Items */}
+      {activeData?.styles?.map((item, index) => (
+        <div key={index} className="flex-shrink-0">
+          <Link
+            href={`/${activeData?.name
+              ?.toLowerCase()
+              .replaceAll(' ', '-')}/?style=${item.name
+              ?.toLowerCase()
+              .replaceAll(' ', '-')}`}
+            className="flex flex-col items-center gap-2 px-4"
+          >
+            <div className="relative w-20 h-20 md:w-28 md:h-28">
+              <Image
+                src={item.image?.url || '/'}
+                alt={item.name}
+                fill
+                sizes="(max-width: 768px) 80px, 112px"
+                className="rounded-full object-cover"
+                draggable="false"
+              />
+            </div>
+            <p className="uppercase text-center text-xs md:text-sm tracking-[0.4em] text-amber-950 whitespace-nowrap">
+              {item.name}
+            </p>
+          </Link>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
   );

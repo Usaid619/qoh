@@ -1,6 +1,7 @@
 'use client'
 
 import HeaderNav from "@/components/Header/HeaderNav";
+import Footer from "@/components/ui/Footer";
 import "./globals.css";
 import localFont from "next/font/local";
 import { useRef,useState, useEffect } from "react";
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
         <HeaderNav headerRef={headerRef}
           isScrolled={isScrolled}/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

@@ -142,7 +142,7 @@ const Header = ({ headerRef, isScrolled }) => {
       {/* header */}
       <div className="flex items-center lg:min-h-[auto] min-h-[78px] py-8 sm:py-0 relative w-full lg:items-center justify-between px-3 lg:px-12 3xl:px-16 4xl:px-24">
         <svg
-          className="h-6 w-6 cursor-pointer lg:hidden"
+          className="h-6 w-6 cursor-pointer border border-black lg:hidden"
           onClick={handleHamburgerClick}
           viewBox="0 0 37 22"
           fill="none"
@@ -180,7 +180,7 @@ const Header = ({ headerRef, isScrolled }) => {
   {/* Logo */}
   <Link
   aria-label="company logo"
-  className={`cursor-pointer relative w-32 aspect-[2751/1700] `}
+  className={`cursor-pointer relative w-16 xs:w-32 aspect-[2751/1700] `}
   href="/"
 >
   <Image
@@ -197,7 +197,7 @@ const Header = ({ headerRef, isScrolled }) => {
     height={1408}
     width={2751}
     alt="business logo"
-    className={`absolute inset-0 object-contain transition-opacity duration-300 ${
+    className={`absolute inset-0 object-contain transition-opacity duration-300 -translate-y-1/2 top-1/2 ${
       location !== "/" || isScrolled ? "opacity-100" : "opacity-0"
     }`}
     src={businessLogo}
@@ -207,20 +207,20 @@ const Header = ({ headerRef, isScrolled }) => {
 
 
   {/* Divider Line */}
-  <div className="w-px h-16 bg-gray-300" />
+  <div className="w-px h-8 xs:h-16 bg-gray-300" />
 
   {/* Text */}
   <div className="flex flex-col items-center justify-center">
-    <span className="text-2xl font-medium tracking-wider font-bigilla">
+    <span className="text-base xs:text-2xl font-medium tracking-wider font-bigilla">
       Queen of Hearts
     </span>
-    <span className={`before:content-[""] before:h-[1px] before:w-4 before:bg-white before:absolute before:left-0 before:top-[50%] before:translate-x-[-140%] before:translate-y-[-50%]
+    <span className={`before:content-[""] before:h-[1px] before:w-4 before:absolute before:left-0 before:top-[50%] before:translate-x-[-140%] before:translate-y-[-50%] ${isScrolled ? "before:bg-black" : "before:bg-white"}
 
-  after:content-[""] after:h-[1px] after:w-4 after:bg-white after:absolute after:right-0 after:top-[50%] after:translate-x-[140%] after:translate-y-[-50%] 
+  after:content-[""] after:h-[1px] after:w-4 after:absolute after:right-0 after:top-[50%] after:translate-x-[140%] after:translate-y-[-50%] ${isScrolled ? "after:bg-black" : "after:bg-white"}
 
-  relative text-white capitalize text-center text-wrap 
+  relative capitalize text-center text-wrap 
 
-  text-[10px] leading-[1.4] tracking-widest whitespace-nowrap`}>THE JEWELS GALLERIA</span>
+  text-[6px] xs:text-[10px] leading-[1.4] tracking-widest whitespace-nowrap`}>THE JEWELS GALLERIA</span>
   </div>
 </div>
 

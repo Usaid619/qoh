@@ -11,15 +11,14 @@ const BrandStore = () => {
     <div className="flex flex-col gap-4 font-gothic">
       <div className="flex flex-col justify-center items-center">
         <div className="flex flex-col gap-4 3xl:gap-6 4xl:gap-7 justify-center items-center ">
-          <h1 className=" uppercase text-center md:text-3xl  text-3xl">The Khwaahish Store</h1>
+          <h1 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">The Khwaahish Store</h1>
           <p
-            className=" text-center font-normal text-gray-500 
-
-
-          max-w-full text-sm tracking-[1.3px] leading-[1.8] 
-          lg:max-w-[55%] px-2
-        3xl:text-xl 3xl:leading-[1.7]
-         4xl:text-3xl 4xl:leading-[1.7]
+            className=" font-normal text-gray-500 
+            max-w-full tracking-[1.3px] leading-[1.8] 
+            lg:max-w-[55%] px-2
+            3xl:text-xl 3xl:leading-[1.7]
+            4xl:text-3xl 4xl:leading-[1.7]
+            text-base text-center
           "
           >
             You can visit our store to examine our wide collection or connect with us for Customisations, Video Shopping, Door delivery & Payment options . Read more 

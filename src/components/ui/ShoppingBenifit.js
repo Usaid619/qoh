@@ -15,9 +15,9 @@ const benefits = [
 const ShoppingBenifit = () => {
   return (
 
-    <div className="text-center w-full  md:py-12 flex flex-col md:gap-5 gap-4 font-gothic">
-      <h2 className="md:text-[38px] text-[20px] font-gothic  tracking-wide ">SHOPPING BENEFITS</h2>
-      <p className="text-gray-500 md:text-[20px] tracking-wide ">Exclusive deals, premium quality, and hassle-free shopping!</p>
+    <div className="text-center w-full flex flex-col md:gap-5 gap-4 font-gothic">
+      <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">SHOPPING BENEFITS</h2>
+      <p className="text-base text-center">Exclusive deals, premium quality, and hassle-free shopping!</p>
 
 
       <div className="flex w-full flex-wrap justify-center mt-4 items-center md:gap-10 gap-3">
@@ -25,10 +25,7 @@ const ShoppingBenifit = () => {
           {benefits.map((benefit, index) => (
             <div key={index} className={` md:h-[320px] flex gap-6 md:${benefit.pos} items-start justify-center`}>
               <div
-                style={{
-                  background: "radial-gradient(circle, white, #e5e7eb)",
-                }}
-                className='border p-1 w-[125px] sm:w-[160px] h-[220px] sm:h-[235px] rounded-xl flex flex-col justify-center items-center border-gray-400 '>
+                className='border p-1 w-[125px] sm:w-[160px] h-[220px] sm:h-[235px] rounded-xl flex flex-col justify-center items-center border-gray-400 shadow-[inset_0_0_8px_rgba(255,255,255,0.4)]'>
                 <h1 className="text-3xl ">{benefit.title2}</h1>
                 {benefit.icon}
                 <h3 className="mt-4 text-[12px] font-semibold text-gray-600 px-2 ">{benefit.title}</h3>

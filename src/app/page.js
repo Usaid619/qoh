@@ -9,7 +9,6 @@ import ShoppingBenifit from '@/components/ui/ShoppingBenifit'
 import Styles from '@/components/ui/Styles'
 import Trending from '@/components/ui/Trending'
 import React from 'react'
-import Footer from '@/components/ui/Footer'
 
 const page = () => {
   return (
@@ -26,8 +25,6 @@ const page = () => {
       <BrandsPromise/>
       <BrandStore/>
       {/* Testimonials */}
-      {/* Footer */}
-      <Footer/>
     </div>
   )
 }
