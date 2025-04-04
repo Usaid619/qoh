@@ -6,7 +6,7 @@ const Trending = () => {
     <div className='relative flex flex-col lg:flex-row items-center justify-center lg:gap-44 gap-5 px-6 py-10 w-full'>
 
 <h1 className='lg:hidden uppercase text-2xl lg:text-5xl font-medium'>
-          what's trending?
+          what&apos;s trending?
         </h1>
       {/* Left Image Section */}
       <div className="flex-shrink-0">
@@ -20,7 +20,7 @@ const Trending = () => {
       {/* Right Content Section */}
       <div className="flex flex-col items-center text-center lg:items-start lg:text-left gap-4 lg:gap-9 max-w-xl">
         <h1 className='hidden lg:block uppercase text-2xl lg:text-5xl font-medium'>
-          what's trending?
+          what&apos;s trending?
         </h1>
         <span className=' text-[16px] md:text-[20px] text-gray-700'>
           Find your wardrobe essential or a new everyday favourite with our array of diamond rings. From classic styles to trendy designs, to dazzling ones and minimalist ones for understated elegance, you will find many to suit your signature style.

@@ -9,7 +9,7 @@ const Pitch = () => {
         text-[18px] md:text-[26px] font-semibold
         `}
       >
-        Queen Of Hearts - Chennai's crown jewel of partywear, where lightweight doesn't mean low on drama.
+        Queen Of Hearts - Chennai&apos;s crown jewel of partywear, where lightweight doesn&apos;t mean low on drama.
       </h4>
       <p
         className={`text-gray-500 font-normal lg:text-lg text-[16px] max-w-[90%] lg:max-w-[80%]
