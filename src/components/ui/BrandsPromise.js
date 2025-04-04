@@ -3,21 +3,23 @@ import React, { useState, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoPlay from "embla-carousel-autoplay";
 import Image from "next/image";
-
+import { data } from 'autoprefixer';
 const BrandsPromise = () => {
   const data = {
     items: [
       {
         image: "/assets/Khwaahish-Store-img.webp",
         title: "Legacy of Khwaahish ",
-        description: "20+ Years of Crafting Unforgettable Jewellery—Blending Tradition with Modern Flai ",
+        description: "20+ Years of Crafting Unforgettable Jewellery—Blending Tradition with Modern Flai ", 
+        className:'flex-row'
       },
       {
         image: "/assets/Curators-Tale-with-watermark-img.webp",
         title: "Curator's Tale",
         description: "Our brand represents our desire to create exquisite, beautiful and high-quality diamond jewellery that is as special as you.Explore our collection at the Queen of Hearts Galleria and experience a world of Diamond Jewellery, truly Different by Design.",
+        className:'flex-row'
       },
-      
+
     ],
   };
 
@@ -25,49 +27,49 @@ const BrandsPromise = () => {
     list: [
       {
         image: "/assets/promiseicon/1742984055942_325190_Promise-Sec-Icons-1.png",
-        title: "Icon 1",
+        title: "BIS Hallmarked",
       },
       {
         image: "/assets/promiseicon/1742984154353_95542_Promise-Sec-Icons-2.png",
-        title: "Icon 2",
+        title: "Assured time maintanance",
       },
       {
         image: "/assets/promiseicon/1742984221431_901608_Promise-Sec-Icons-3.png",
-        title: "Icon 3",
+        title: "Life time Exchange",
       },
       {
         image: "/assets/promiseicon/1742984273264_14761_Promise-Sec-Icons-4.png",
-        title: "Icon 4",
+        title: "Free 1 year warranty",
       },
       {
         image: "/assets/promiseicon/1742984342416_505983_Promise-Sec-Icons-5.png",
-        title: "Icon 5",
+        title: "Different by Design Unique designs with a World",
       },
       {
         image: "/assets/promiseicon/1742984389102_309064_Promise-Sec-Icons-6.png",
-        title: "Icon 6",
+        title: "0% Deduction old Gold exchange",
       },
       {
         image: "/assets/promiseicon/1742984450384_339793_Promise-Sec-Icons-7.png",
-        title: "Icon 6",
+        title: "Free and insured shipping across India",
       },
       {
         image: "/assets/promiseicon/1742984498841_972356_Promise-Sec-Icons-8.png",
-        title: "Icon 6",
+        title: "Personalized Shopping Experience",
       },
       {
         image: "/assets/promiseicon/1743067170250_651289_Promise-Sec-Icons-9.webp",
-        title: "Icon 6",
+        title: "“Natural Diamonds” Certification by International Gemological Laboratories",
       },
     ],
     title: "The Brand Promise",
     description: "Pure, Natural Diamonds. Designed to Reflect the Real You.",
   };
 
-  const len = data?.items?.length + 1;
+
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: false, dragFree: false },
+    { loop: true, dragFree: false, align: 'center', slidesToScroll: 1  },
     [AutoPlay({ delay: 10000, stopOnInteraction: false })],
   );
   const [activeIndex, setActiveIndex] = useState(0);
@@ -106,34 +108,37 @@ const BrandsPromise = () => {
     description,
     // additionalDescription = "",
     key,
+    className,
   ) => (
-    <div key={key} className="embla__slide flex-[0_0_100%] min-w-0  ">
+    <div key={key} className="embla__slide flex-[0_0_70%] min-w-0 mx-2 ">
       <div className=" p-2">
-      <div className="flex flex-col md:flex-row bg-neutral-100 w-[80%] mx-auto">
-        <div className="w-full md:w-2/3 relative h-[300px] sm:h-[400px] md:h-[540px]">
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            priority={alt === "Slide 1"}
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw"
-          />
-        </div>
-        <div className="w-full md:w-1/3 p-4 md:p-8">
-          <h3 className="text-2xl font-bigilla mb-4 tracking-widest md:px-3 leading-[1.8]">
-            {title}
-          </h3>
-          <p className="text-gray-500 font-gothic typo-body tracking-widest leading-[1.7] md:px-2">
-            {description}
-          </p>
-          {/* {additionalDescription && (
+
+        <div className={`flex flex-col md:${className} md:flex bg-neutral-100 w-[80%] mx-auto`}>
+          <div className="w-full md:w-2/3 relative h-[300px] sm:h-[400px] md:h-[540px]  ">
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              priority={alt === "Slide 1"}
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw"
+            />
+          </div>
+          <div className="w-full md:w-1/2 p-4 md:p-8">
+            <h3 className="text-2xl font-gothic md:text-start text-center mb-4 tracking-widest md:px-3 leading-[1.8]">
+              {title}
+            </h3>
+            <p className="text-gray-500 font-gothic md:text-start text-center typo-body tracking-widest leading-[1.7] md:px-2">
+              {description}
+            </p>
+            {/* {additionalDescription && (
+
             <p className="text-gray-500 font-gothic typo-body tracking-wider leading-7 text-center mt-5">
               {additionalDescription}
             </p>
           )} */}
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );
@@ -154,65 +159,80 @@ const BrandsPromise = () => {
   );
 
   return (
-    <section className=" bg-gray-100 w-full h-full pb-5">
-      <div className="flex flex-col justify-center items-center my-5 gap-5">
+    <section className=" bg-gray-100 w-full h-full pb-5 font-gothic">
+      <div className="flex flex-col justify-center items-center my-7 gap-5">
 
-      <h1 className=" uppercase md:text-2xl">The Brands Promise</h1>
-      <p className="uppercase text-gray-600 md:text-lg"> Pure,Natural Diamonds.Designed to Reflect the Real you</p>
+
+        <h1 className=" uppercase md:text-[30px]">The Brand's Promise</h1>
+        <p className=" text-gray-600 md:text-[16px] text-[14px] text-center md:px-0 px-4"> Pure,Natural diamonds. Designed to reflect the real you</p>
+
       </div>
       <div className="">
-        
+
         <div className="relative">
           {/* Desktop version */}
           <div className=" lg:flex-col gap-6 lg:flex">
             <div className="embla overflow-hidden" ref={emblaRef}>
               <div className="embla__container flex gap-5 hover:cursor-grab active:cursor-grabbing">
-                {data?.items?.map((slide, index) => (
+                {data?.items?.slice(0,1).map((slide, index) => (
                   renderSlide(
                     slide.image,
                     slide.title,
                     slide.title,
                     slide.description,
-                    `slide-${index}`
+                    `slide-${index}`,
+                    slide.className,
                   )
                 ))}
 
                 <div className="embla__slide flex-[0_0_100%] min-w-0">
-                  <div className="flex flex-col md:flex-row items-center md:w-[50%] bg-white h-full justify-center text-center mx-auto">
-                    <div className="grid grid-cols-3 gap-x-0 gap-y-0 w-[95%] h-[95%]">
+                  <div className="flex flex-col md:flex-row items-center md:w-[50%] bg-white md:py-0 py-4 h-auto md:h-full md:justify-center justify-start text-center mx-auto">
+                    <div className="grid grid-cols-3 gap-x-4 gap-y-0 w-[95%] md:h-[95%] h-[40%]">
                       {data2?.list?.map((hallmark, index) => (
                         <div
                           key={index}
-                          className={`${index % 2 == 0 ? "bg-gray-200" : "bg-[#F7F7F7]"} flex flex-col justify-center items-center md:p-6 p-5 text-center border border-gray-200 border-solid flex-1 basis-1/2
-              gap-2 md:gap-4
-              `}
+                          className={`${index % 2 == 0 ? "bg-gray-200" : "bg-[#F7F7F7]"} flex flex-col justify-center items-center md:p-6 p-1 text-center border border-gray-200 border-solid flex-1 basis-1/2 md:h-auto h-[140px]
+      gap-0 md:gap-4 
+      `}
                         >
                           <img
                             className="object-contain object-center
-                md:w-2/3
-                 h-[30px] w-20
-                 sm:h-10 sm:w-20
-                 md:h-[50px]
-                 3xl:w-24 3xl:h-14
-                 4xl:w-32 4xl:h-24
-                "
+        md:w-2/3
+        h-[30px] w-20
+        sm:h-10 sm:w-20
+        md:h-[50px]
+        3xl:w-24 3xl:h-14
+        4xl:w-32 4xl:h-24
+        filter grayscale brightness-0
+        "
                             src={hallmark.image}
                             alt={hallmark.title}
                           />
                           <span
-                            className="text-center text-black
-                typo-nano
-                
-              "
+                            className="text-center md:text-md text-[11px] text-black
+        typo-nano
+        "
                           >
                             {hallmark.title}
                           </span>
                         </div>
                       ))}
                     </div>
-                    
+
                   </div>
                 </div>
+
+                {data?.items?.slice(1,2).map((slide, index) => (
+                  renderSlide(
+                    slide.image,
+                    slide.title,
+                    slide.title,
+                    slide.description,
+                    `slide-${index}`,
+                    slide.className,
+                  )
+                ))}
+
               </div>
             </div>
 
@@ -332,8 +352,8 @@ const BrandsPromise = () => {
                   Pure, Natural Diamonds. Designed to Reflect the Real You.
                 </p>
               </div> */}
-            {/* </div> */}
-          {/* </div> */} 
+          {/* </div> */}
+          {/* </div> */}
         </div>
       </div>
     </section>
