@@ -81,7 +81,7 @@ const Styles = () => {
   }, []);
   useEffect(() => {
     getActiveData();
-  }, [activeButton]);
+  }, [activeButton,getActiveData]);
   
 
   return (

@@ -145,4 +145,6 @@ const HamburgerMenu = forwardRef(
   },
 );
 
+HamburgerMenu.displayName = "HamburgerMenu";
+
 export default HamburgerMenu;

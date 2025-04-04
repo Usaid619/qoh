@@ -163,7 +163,7 @@ const BrandsPromise = () => {
       <div className="flex flex-col justify-center items-center my-7 gap-5">
 
 
-        <h1 className=" uppercase md:text-[30px]">The Brand's Promise</h1>
+        <h1 className=" uppercase md:text-[30px]">The Brand&apos;s Promise</h1>
         <p className=" text-gray-600 md:text-[16px] text-[14px] text-center md:px-0 px-4"> Pure,Natural diamonds. Designed to reflect the real you</p>
 
       </div>

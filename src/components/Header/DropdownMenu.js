@@ -177,4 +177,5 @@ const DropdownMenu = forwardRef(
   },
 );
 
+DropdownMenu.displayName = "DropdownMenu";
 export default DropdownMenu;
