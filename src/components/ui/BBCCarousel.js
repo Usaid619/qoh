@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
 import {
   PrevButton,
@@ -10,13 +10,19 @@ import {
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const BBCCarousel = ({slides}) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "center",
     slidesToScroll: "auto",
     loop:true
-  });
+  })
+
+  
+  
+ 
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
@@ -27,6 +33,28 @@ const BBCCarousel = ({slides}) => {
     onPrevButtonClick,
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
+
+  useGSAP(() => {
+    const dots = document.querySelectorAll(".embla__dot")
+  
+    if (dots.length === 0) return;
+  
+    gsap.fromTo(
+      dots,
+      { x: 0 },
+      {
+        x: 10,
+        repeat: -1,
+        yoyo: true,
+        stagger: 0.1,
+        duration: 0.4,
+        ease: "power1.inOut",
+      }
+    )
+  }, [selectedIndex]);
+  
+  
+
 
   return (
     // Adjust to slide 3 images per slide
@@ -63,19 +91,16 @@ const BBCCarousel = ({slides}) => {
             onClick={onPrevButtonClick}
             disabled={prevBtnDisabled}
           />
-          <div className="embla__dots">
-            {scrollSnaps.map((_, index) => (
-              <DotButton
-                key={index}
-                onClick={() => onDotButtonClick(index)}
-                className={"embla__dot h-2 w-2 3xl:h-3 3xl:w-3 4xl:h-4 4xl:w-4 border border-black rounded-full".concat(
-                  index === selectedIndex
-                    ? "embla__dot--selected h-2 w-9 3xl:h-3 3xl:w-14 4xl:h-4 4xl:w-[76px]"
-                    : "",
-                )}
-              />
-            ))}
-          </div>
+          <div className="embla__dots ">
+  {scrollSnaps.map((_, index) => (
+  <DotButton
+  key={index}
+  onClick={() => onDotButtonClick(index)}                                                                             
+  className="embla__dot h-2 w-2 3xl:h-3 3xl:w-3 4xl:h-4 4xl:w-4 border border-black rounded-full"
+/>
+
+  ))}
+</div>
           <NextButton
             className="flex items-center md:justify-center justify-end h-16 w-16 3xl:h-20 3xl:w-20 4xl:h-32 4xl:w-32"
             onClick={onNextButtonClick}
