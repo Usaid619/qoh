@@ -142,7 +142,7 @@ const Header = ({ headerRef, isScrolled }) => {
       {/* header */}
       <div className="flex items-center lg:min-h-[auto] min-h-[78px] py-8 sm:py-0 relative w-full lg:items-center justify-between px-3 lg:px-12 3xl:px-16 4xl:px-24">
         <svg
-          className="h-6 w-6 cursor-pointer border border-black lg:hidden"
+          className="h-6 w-6 cursor-pointer lg:hidden"
           onClick={handleHamburgerClick}
           viewBox="0 0 37 22"
           fill="none"
