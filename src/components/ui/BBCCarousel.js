@@ -37,7 +37,7 @@ const BBCCarousel = ({slides}) => {
             <Link
             href={slide?.link || "#"}
               key={slide?._id || index}
-              className="relative px-3 w-full md:w-1/3 flex-shrink-0 group"
+              className="relative px-3 w-full md:w-1/3 flex-shrink-0"
             >
               <Image
                 width={1536}
@@ -48,7 +48,7 @@ const BBCCarousel = ({slides}) => {
                 src={slide?.imageUrl}
               />
             
-            <h2 className="uppercase text-center absolute bottom-0 left-3 right-3 text-white bg-black/20 py-3 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-[16px] lg:text-[24px]">
+            <h2 className="uppercase text-center absolute bottom-0 left-3 right-3 text-black bg-white/70 py-3 px-4 text-[16px] lg:text-[20px]">
                 {slide?.title}
               </h2>
               
@@ -57,7 +57,7 @@ const BBCCarousel = ({slides}) => {
         </div>
       </div>
       <div className={"embla__controls"}>
-        <div className="embla__buttons md:justify-center">
+        <div className="embla__buttons justify-between md:justify-center px-2">
           <PrevButton
             className="flex items-center md:justify-center justify-start h-16 w-16 3xl:h-20 3xl:w-20 4xl:h-32 4xl:w-32"
             onClick={onPrevButtonClick}

@@ -9,7 +9,7 @@ const Hallmarks = ({data}) => {
 
   return (
     <div
-      className={`bg-gray-200 text-gray-500 flex flex-col items-center gap-2 py-8
+      className={`bg-gray-100 text-gray-500 flex flex-col items-center gap-2 py-4
       escape
       md:gap-6 w-full
       `}

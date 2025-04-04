@@ -1,6 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@layer components {
+/* @layer components {
   .restrict {
     @apply flex flex-col gap-10 pb-16 px-5 sm:px-[30px] lg:px-[57px];
   }
@@ -47,8 +49,7 @@
  .typo-hero{
   @apply text-3xl lg:text-[44px] leading-[30px] tracking-[5px] 
  }
-}
-
+} */
 
 .embla__viewport {
   overflow: hidden;
@@ -78,7 +79,6 @@
 .embla__buttons {
   display: flex;
   width: 100%;
-  justify-content: space-between;
 }
 
 .embla__button {

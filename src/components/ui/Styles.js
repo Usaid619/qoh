@@ -6,12 +6,27 @@ import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import api from "@/utils/api";
 import { usePathname } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const Styles = () => {
   const [activeButton, setActiveButton] = useState("");
   const [categoryList, setCategoryList] = useState([]);
   const [activeData, setActiveData] = useState([]);
   const pathName = usePathname()
+
+  const [index, setIndex] = useState(0);
+  const visibleCount = 4;
+  const maxIndex = categoryList.length - visibleCount;
+
+  const handleNext = () => {
+    if (index < maxIndex) setIndex(index + 1);
+  };
+
+  const handlePrev = () => {
+    if (index > 0) setIndex(index - 1);
+  };
 
   const [emblaRef] = useEmblaCarousel(
     {
@@ -67,29 +82,66 @@ const Styles = () => {
   useEffect(() => {
     getActiveData();
   }, [activeButton]);
+  
 
   return (
-    <section className="w-full">
-      <div className="font-gothic flex flex-col gap-4 py-4 w-full  font-light p-3 md:p-6" aria-label="Recommendations">
+    <section className="w-full ">
+      <div className="font-gothic flex flex-col gap-4 py-4 w-full  font-light p-3 md:p-6 " aria-label="Recommendations">
         <div className="flex flex-col gap-4 items-center justify-center">
-           <h2 className="uppercase text-2xl lg:text-5xl font-medium">
+           <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium">
           Browse by Style
         </h2>
-        <span className="capitalize text-[16px] md:text-[20px]">Timeless Classics To Modern Trends. All In One Piece!</span>
+        <span className="capitalize text-[16px] md:text-[20px]">Timeless classics to modern trends. All in one piece!</span>
         </div>
        
 
-        <div className="flex w-full mx-auto px-10 sm:px-10 md:px-12 lg:px-12 space-x-4 gap-1 overflow-x-hidden no-scrollbar justify-center items-center lg:py-0 md:py-0 sm:py-0 py-2 mb-4">
+        <div className="flex items-center justify-center relative w-full px-10 ">
+      {/* Navigation Arrows */}
+      <button
+  onClick={handlePrev}
+  className={`absolute left-0 z-10 top-1/2 -translate-y-1/2 p-2 cursor-pointer flex items-center justify-center transition-opacity duration-300 ${
+    index === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100'
+  }`}
+  disabled={index === 0}
+>
+  <FontAwesomeIcon className="w-5 h-5" icon={faChevronLeft} />
+</button>
+<button
+  onClick={handleNext}
+  className={`absolute right-0 z-10 top-1/2 -translate-y-1/2 p-2 cursor-pointer flex items-center justify-center transition-opacity duration-300 ${
+    index === maxIndex ? 'opacity-0 pointer-events-none' : 'opacity-100'
+  }`}
+  disabled={index === maxIndex}
+>
+  <FontAwesomeIcon className="w-5 h-5" icon={faChevronRight} />
+</button>
+
+      {/* Main Scroll Container */}
+      <div className="overflow-hidden w-full">
+        <div
+          className="flex items-center flex-nowrap transition-transform duration-300 ease-in-out gap-14"
+          style={{ transform: `translateX(-${index * 25}%)` }}
+        >
           {categoryList.map((category) => (
-            <div key={category._id} onClick={() => setActiveButton(category?.name)} className={` cursor-pointer h-full flex-shrink-0  flex flex-col justify-center items-center rounded-md border border-gray-300 py-1 px-5 shadow ${activeButton === category?.name ? "bg-gray-200 border border-black" : ""}`}>
-
-
-              <p className="text-amber-950 font-light text-xl">{category?.name.replace("Diamond", "")}</p>
+            <div
+              key={category._id}
+              onClick={() => setActiveButton(category?.name)}
+              className={`[width:calc((100%-10.5rem)/4)] flex-shrink-0 cursor-pointer h-full flex flex-col justify-center items-center rounded-md border border-gray-300 py-3 px-5 shadow-lg transition-colors duration-300 hover:bg-black hover:text-white ${
+                activeButton === category?.name
+                  ? "bg-black text-white border border-black"
+                  : ""
+              }`}
+            >
+              <p className="font-medium md:text-xl text-sm whitespace-nowrap uppercase">
+                {category?.name.replace("Diamond", "")}
+              </p>
             </div>
           ))}
         </div>
+      </div>
+    </div>
 
-        <div className={`${pathName=== '/' ? 'bg-[#F9F9F9] border border-gray-400' : 'bg-[#fbf6f5] border border-amber-950'} w-full p-4 bg-#f9f4f3 rounded-2xl relative left-1/2 -translate-x-1/2 mt-2 overflow-hidden inset-shadow-xs`} role="tabpanel" id={`${activeButton}-panel`} aria-label={`${activeButton} styles carousel`}>
+        <div className={`${pathName=== '/' ? 'bg-[#F9F9F9] border border-gray-400' : 'bg-[#fbf6f5] border border-amber-950'} w-full p-4 bg-#f9f4f3 rounded-2xl relative left-1/2 -translate-x-1/2 mt-2 overflow-hidden shadow-[inset_0_0px_30px_rgba(0,0,0,0.2)]`} role="tabpanel" id={`${activeButton}-panel`} aria-label={`${activeButton} styles carousel`}>
           <div className="embla hover:cursor-pointer active:cursor-grabbing" ref={emblaRef}>
             <div className="embla__container  flex items-center">
               <div className={` ${getAllStyleData()?.url?"":"hidden"} min-w-0 px-8`}>
@@ -104,9 +156,9 @@ const Styles = () => {
               </div>
               {activeData &&
                 activeData?.styles?.map((item, index) => (
-                  <div key={index} className="embla__slide min-w-0 px-8">
+                  <div key={index} className="flex flex-[0_0_20%] min-w-0 px-8">
                     <Link href={`/${activeData?.name?.toLowerCase().replaceAll(" ", "-")}?style=${item.name?.toLowerCase().replaceAll(" ", "-")}`}>
-                      <div className="flex flex-col justify-center items-center gap-2">
+                      <div className="flex flex-col justify-center items-center gap-2 ">
                         <div className="relative w-20 h-20  md:w-28 md:h-28">
                           <Image src={item.image?.url || "/"} alt={item.name} fill sizes="(max-width: 768px) 80px, 112px" className="rounded-full object-cover" draggable="false" />
                         </div>
