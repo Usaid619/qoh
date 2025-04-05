@@ -3,30 +3,32 @@ import { FaShoppingCart, FaExchangeAlt, FaVideo, FaStar, FaClipboardList } from 
 import { TbCalendarClock } from "react-icons/tb";
 
 const benefits = [
-  { title2: '10+1 ', title: "  MONTHLY INSTALMENT", description: "Purchase your desired jewelry with monthly rewards.", pos: "items-start" },
+  { title2: '10+1 ', title: "  MONTHLY INSTALMENT", description: "Purchase your desired jewelry with monthly rewards.", pos: "md:items-start" },
 
-  { icon: <FaStar size={35} />, title: "REWARD POINTS", description: "Reward Points. Save more. Shop more.", pos: "items-end" },
-  { icon: <FaVideo size={35} />, title: "VIDEO SHOPPING", description: "Now shop with us from anywhere.", pos: "items-start" },
-  { title: "EXCHANGE ", title3: 'OLD ➝ NEW', description: "Get 100% Buy back on your old gold.", pos: "items-end" },
+  { icon: <FaStar size={35} />, title: "REWARD POINTS", description: "Reward Points. Save more. Shop more.", pos: "md:items-end" },
+  { icon: <FaVideo size={35} />, title: "VIDEO SHOPPING", description: "Now shop with us from anywhere.", pos: "md:items-start" },
+  { title: "EXCHANGE ", title3: 'OLD ➝ NEW', description: "Get 100% Buy back on your old gold.", pos: "md:items-end" },
 
-  { icon: <TbCalendarClock size={35} />, title: "FREE MAINTENANCE WARRANTY", description2: "Relax, enjoy your jewellery! We offer free product maintenance for a year.", pos: "items-start" },
+  { icon: <TbCalendarClock size={35} />, title: "FREE MAINTENANCE WARRANTY", description2: "Relax, enjoy your jewellery! We offer free product maintenance for a year.", pos: "md:items-start" },
 
 ];
 const ShoppingBenifit = () => {
   return (
 
-    <div className="text-center w-full flex flex-col md:gap-5 gap-4 font-gothic">
-      <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">SHOPPING BENEFITS</h2>
-      <p className="text-[13px] lg:text-xl 
- text-center">Exclusive deals, premium quality, and hassle-free shopping!</p>
+    <div className="w-full text-center md:py-12 flex flex-col md:gap-5 gap-4 font-gothic">
+      <h2 className="md:text-[38px] text-[20px] font-gothic  tracking-wide ">SHOPPING BENEFITS</h2>
+      <p className="text-gray-500 md:text-[20px] tracking-wide ">Exclusive deals, premium quality, and hassle-free shopping!</p>
 
 
-      <div className="flex w-full flex-wrap justify-center mt-4 items-center md:gap-10 gap-3">
-        <div className=' w-10/12 flex flex-wrap justify-center xl:justify-between mt-4  sm:gap-10 gap-2.5'>
+      <div className="flex flex-wrap justify-center mt-4 items-center md:gap-10 gap-3 ">
+        <div className=' w-10/12 flex flex-wrap justify-center mt-4  sm:gap-10 gap-2.5'>
           {benefits.map((benefit, index) => (
-            <div key={index} className={` md:h-[320px] flex gap-6 md:${benefit.pos} items-start justify-center`}>
+            <div key={index} className={` md:h-[320px] flex gap-6 ${benefit.pos} items-start justify-center `}>
               <div
-                className='border p-1 w-[125px] sm:w-[160px] h-[220px] sm:h-[235px] rounded-xl flex flex-col justify-center items-center border-gray-400 shadow-[inset_0_0_8px_rgba(255,255,255,0.4)]'>
+                style={{
+                  background: "radial-gradient(circle, white, #e5e7eb)",
+                }}
+                className='border p-1 w-[125px] sm:w-[160px] h-[220px] sm:h-[235px] rounded-xl flex flex-col justify-center items-center border-gray-400'>
                 <h1 className="text-3xl ">{benefit.title2}</h1>
                 {benefit.icon}
                 <h3 className="mt-4 text-[12px] font-semibold text-gray-600 px-2 ">{benefit.title}</h3>

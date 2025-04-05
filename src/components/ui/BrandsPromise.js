@@ -5,23 +5,24 @@ import AutoPlay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { data } from 'autoprefixer';
 const BrandsPromise = () => {
-  const data = {
-    items: [
-      {
-        image: "/assets/Khwaahish-Store-img.webp",
-        title: "Legacy of Khwaahish ",
-        description: "20+ Years of Crafting Unforgettable Jewellery—Blending Tradition with Modern Flai ", 
-        className:'flex-row'
-      },
-      {
-        image: "/assets/Curators-Tale-with-watermark-img.webp",
-        title: "Curator's Tale",
-        description: "Our brand represents our desire to create exquisite, beautiful and high-quality diamond jewellery that is as special as you.Explore our collection at the Queen of Hearts Galleria and experience a world of Diamond Jewellery, truly Different by Design.",
-        className:'flex-row'
-      },
+  const data = [
+    {
+      image: "/img/curator's tale image 1.svg",
+      title: "Curator's Tale ",
+      description: "With two decades of excellence behind Chennai’s most cherished diamond jewellery brand — Khwaahish, we set forth to redefine the meaning of affordable luxury.  ",
+      description2: "Queen of Hearts is our latest pursuit — a refined destination for the modern woman to discover jewellery that is precious, aspirational, yet accessible.  ",
+      className: 'md:flex-row'
 
-    ],
-  };
+    },
+    {
+      image: "/img/image 28.svg",
+      title: "DESIGN PHILOSPHY",
+      description: " We celebrate creativity and boldness in design, pushing the boundaries of what jewellery can be. Our design team embraces innovation to create jewellery that feels fresh and exciting-we offer pieces that are versatile, fun and irresistibly chic. ",
+      description2: "QOH is where the art of jewellery meets individuality, allowing our customers to discover something they can call their own. ",
+      className: 'md:flex-row-reverse'
+
+    },
+  ]
 
   const data2 = {
     list: [
@@ -68,296 +69,144 @@ const BrandsPromise = () => {
 
 
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, dragFree: false, align: 'center', slidesToScroll: 1  },
-    [AutoPlay({ delay: 10000, stopOnInteraction: false })],
-  );
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  const scrollTo = useCallback(
-    (index) => {
-      if (emblaApi) emblaApi.scrollTo(index);
-    },
-    [emblaApi],
-  );
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setActiveIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  React.useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-    return () => emblaApi.off("select", onSelect);
-  }, [emblaApi, onSelect]);
-
-  const renderSlide = (
-    src,
-    alt,
-    title,
-    description,
-    // additionalDescription = "",
-    key,
-    className,
-  ) => (
-    <div key={key} className="embla__slide flex-[0_0_70%] min-w-0 mx-2 ">
-      <div className=" p-2">
-
-        <div className={`flex flex-col md:${className} md:flex bg-neutral-100 w-[80%] mx-auto`}>
-          <div className="w-full md:w-2/3 relative h-[300px] sm:h-[400px] md:h-[540px]  ">
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              priority={alt === "Slide 1"}
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw"
-            />
-          </div>
-          <div className="w-full md:w-1/2 p-4 md:p-8">
-            <h3 className="text-2xl font-gothic md:text-start text-center mb-4 tracking-widest md:px-3 leading-[1.8]">
-              {title}
-            </h3>
-            <p className="text-gray-500 font-gothic md:text-start text-center typo-body tracking-widest leading-[1.7] md:px-2">
-              {description}
-            </p>
-            {/* {additionalDescription && (
-
-            <p className="text-gray-500 font-gothic typo-body tracking-wider leading-7 text-center mt-5">
-              {additionalDescription}
-            </p>
-          )} */}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderPromiseIcon = (index, icon, text, isLarge = false) => (
-    <div
-      key={`promise-icon-${index}`}
-      className={`border-[0.0005rem] border-gray-300 ${index % 2 ? "bg-neutral-100" : "bg-white"} flex flex-col items-center justify-center`}
-    >
-      <Image
-        src={icon}
-        alt={`Icon ${index + 1}`}
-        width={isLarge ? 112 : 40}
-        height={isLarge ? 36 : 40}
-      />
-      <p className="text-xs mt-2 px-6">{text}</p>
-    </div>
-  );
-
   return (
-    <section className=" bg-gray-100 w-full h-full pb-5 font-gothic">
-      <div className="flex flex-col justify-center items-center my-7 gap-5">
+    <>
+      <section className=" w-full h-full pb-5 font-gothic glass-effect">
+        <div className="flex flex-col justify-center items-center my-7 gap-5 ">
+          <h1 className=" uppercase md:text-[30px] text-white text-[18px]">The Brand Promise</h1>
+          <p className=" text-white md:text-[16px] text-[14px] text-center md:px-0 px-4">
+            Pure,Natural diamonds. Designed to reflect the real you
+          </p>
 
+        </div>
+        <div className="">
 
-        <h1 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">The Brand&apos;s Promise</h1>
-        <p className="text-[13px] lg:text-xl 
- text-center"> Pure,Natural diamonds. Designed to reflect the real you</p>
-
-      </div>
-      <div className="">
-
-        <div className="relative">
-          {/* Desktop version */}
-          <div className=" lg:flex-col gap-6 lg:flex">
-            <div className="embla overflow-hidden" ref={emblaRef}>
-              <div className="embla__container flex gap-5 hover:cursor-grab active:cursor-grabbing">
-                {data?.items?.slice(0,1).map((slide, index) => (
-                  renderSlide(
-                    slide.image,
-                    slide.title,
-                    slide.title,
-                    slide.description,
-                    `slide-${index}`,
-                    slide.className,
-                  )
-                ))}
-
-                <div className="embla__slide flex-[0_0_100%] min-w-0">
-                  <div className="flex flex-col md:flex-row items-center md:w-[50%] bg-white md:py-0 py-4 h-auto md:h-full md:justify-center justify-start text-center mx-auto">
-                    <div className="grid grid-cols-3 gap-x-4 gap-y-0 w-[95%] md:h-[95%] h-[40%]">
-                      {data2?.list?.map((hallmark, index) => (
-                        <div
-                          key={index}
-                          className={`${index % 2 == 0 ? "bg-gray-200" : "bg-[#F7F7F7]"} flex flex-col justify-center items-center md:p-6 p-1 text-center border border-gray-200 border-solid flex-1 basis-1/2 md:h-auto h-[140px]
-      gap-0 md:gap-4 
-      `}
-                        >
-                          <img
-                            className="object-contain object-center
-        md:w-2/3
-        h-[30px] w-20
-        sm:h-10 sm:w-20
-        md:h-[50px]
-        3xl:w-24 3xl:h-14
-        4xl:w-32 4xl:h-24
-        filter grayscale brightness-0
-        "
-                            src={hallmark.image}
-                            alt={hallmark.title}
-                          />
-                          <span
-                            className="text-center md:text-md text-[11px] text-black
-        typo-nano
-        "
-                          >
-                            {hallmark.title}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
+          <div className="relative">
+            <div className="flex flex-wrap flex-row items-center md:w-[50%] w-full  py-4 h-auto md:h-full md:justify-center justify-start text-center mx-auto">
+              <div className=" flex flex-wrap md:grid-cols-3 md:grid  md:gap-x-4 gap-y-0 w-[95%] md:h-[95%] h-[40%] mx-auto">
+                {data2?.list?.map((hallmark, index) => (
+                  <div
+                    key={index}
+                    className={`${index % 2 == 0 ? "bg-gray-200" : "bg-[#F7F7F7]"} flex flex-col justify-center items-center md:p-6 p-1 text-center border md:border-gray-200 border-gray-300 border-solid flex-1 basis-1/2 md:h-auto h-[140px] gap-0 md:gap-4 `}>
+                    <img
+                      className="object-contain object-center md:w-2/3 h-[30px] w-20 sm:h-10 sm:w-20 md:h-[50px] 3xl:w-24 3xl:h-14 4xl:w-32 4xl:h-24 filter grayscale brightness-0 "
+                      src={hallmark.image}
+                      alt={hallmark.title}
+                    />
+                    <span
+                      className="text-center text-wrap md:text-md text-[11px] text-black typo-nano ">
+                      {hallmark.title}
+                    </span>
                   </div>
-                </div>
-
-                {data?.items?.slice(1,2).map((slide, index) => (
-                  renderSlide(
-                    slide.image,
-                    slide.title,
-                    slide.title,
-                    slide.description,
-                    `slide-${index}`,
-                    slide.className,
-                  )
                 ))}
-
               </div>
             </div>
-
-            {/* <div className="left-0 right-0 flex justify-center items-center space-x-1 z-10">
-              <button
-                name="prevSlide"
-                className="w-8 h-8"
-                onClick={scrollPrev}
-                disabled={activeIndex === 0}
-              >
-                <Image
-                  src="/assets/back.png"
-                  alt="Previous"
-                  width={20}
-                  height={20}
-                  className={`${activeIndex === 0 ? "opacity-100" : ""} cursor-pointer`}
-                />
-              </button>
-              {[...Array(len)].map((_, index) => (
-                <button
-                  name="dots"
-                  key={`dot-${index}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${index === activeIndex ? "w-7 bg-black" : "w-2 bg-gray-900"
-                    }`}
-                  onClick={() => scrollTo(index)}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-              <button
-                name="nextSlide"
-                className="w-8 h-8"
-                onClick={scrollNext}
-                disabled={activeIndex === len}
-              >
-                <Image
-                  src="/assets/next.png"
-                  alt="Next"
-                  width={20}
-                  height={20}
-                  className={`${activeIndex === 0 ? "opacity-100" : ""} cursor-pointer`}
-                />
-              </button>
-            </div> */}
           </div>
+        </div>
+      </section>
 
-          {/* Mobile version */}
-          {/* <div className="lg:hidden flex flex-col gap-10">
-            {data?.items?.map((slide, index) => (
-              <div key={index} className="flex flex-col items-center bg-neutral-100 shadow-md w-[93%] justify-center text-center mx-auto">
-                <div className="relative w-full h-[280px] sm:h-[390px] md:h-[530px]">
-                  <Image
-                    src={slide?.image}
-                    alt={slide?.title}
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 1026px) 93vw"
-                  />
-                </div>
-                <div className="w-full p-4 flex flex-col ~gap-4/8 sm:p-6 text-center">
-                  <h3 className="text-[30px] text-4xl mb-2 tracking-widest text-center font-bigilla">
-                    {slide?.title}
-                  </h3>
-                  <p className="text-gray-500 typo-body tracking-wider leading-5 font-gothic">
-                    {slide?.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+<div className='block md:hidden mt-5'>
+      <div className=' -mt-8 flex flex-col gap-8'>
+        {data.map((d, i) => (
+          <div key={i} className={`md:w-[50%] md:flex flex flex-col justify-center md:px-0 px-[4%] mx-auto ${d.className} rounded-lg md:rounded-none `}>
+            <div className=" md:w-[50%] flex-col justify-start items-start rounded-lg md:rounded-none">
+              <Image src={d.image} alt="Curator's Tale" width="50" height='25' className=" w-full md:h-[600px] object-cover border md:rounded-tl-lg md:rounded-bl-lg " />
+            </div>
+            <div className='md:w-[50%] w-full pr-[10px] md:py-[80px] py-4 px-5 md:text-start text-center flex flex-col md:gap-10 gap-7 text-[15px]  border bg-gray-100 rounded-bl-md rounded-br-md md:rounded-tr-lg md:rounded-br-lg shadow-lg'>
+              <h1 className='md:text-[25px] text-[30px] uppercase' >{d.title}</h1>
+              <p className=" text-center font-normal text-gray-500 
 
-            <div className="flex flex-col items-center shadow-md w-[93%] justify-center text-center mx-auto">
-              <div className="flex flex-col md:flex-row items-center bg-neutral-100 w-full h-full justify-center text-center mx-auto">
-                <div className="flex flex-wrap justify-items-stretch gap-x-0 gap-y-0 w-full h-full items-stretch md:grid md:grid-cols-hallmark">
-                  {data2?.list?.map((hallmark, index) => (
-                    <div
-                      key={index}
-                      className={`${index % 2 !== 0 ? "bg-gray-50" : "bg-white"} flex flex-col justify-center items-center md:p-6 p-5 text-center border border-gray-200 border-solid flex-1 basis-1/2
-              gap-2 md:gap-4
-              `}
-                    >
-                      <img
-                        className="object-contain object-center
-                 h-[30px] w-20
-                 sm:h-10 sm:w-20
-                 md:w-20 md:h-[50px]
-                 3xl:w-24 3xl:h-14
-                 4xl:w-32 4xl:h-24
-                "
-                        src={hallmark.image}
-                        alt={hallmark.title}
-                      />
-                      <span
-                        className="text-center text-black
-                typo-nano
-                
-              "
-                      >
-                        {hallmark.title}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <div className="w-full md:w-1/3 p-4 md:p-8">
-                  <h3 className="text-[30px] text-4xl mb-2 tracking-widest text-center font-bigilla">
-                    {data2?.title}
-                  </h3>
-                  <p className="text-gray-500 typo-body tracking-wider leading-[1.7] text-center font-gothic md:mt-5">
-                    {data2?.description}
-                  </p>
-                </div>
-              </div>
-              {/* <div className="w-full p-4 flex flex-col ~gap-4/8 text-2xl sm:p-6 text-center">
-                <h3 className="text-2xl mb-3 font-medium tracking-wider leading-tight font-bigilla">
-                  The Brand Promise
-                </h3>
-                <p className="text-gray-500 typo-body tracking-wider leading-5 font-gothic">
-                  Pure, Natural Diamonds. Designed to Reflect the Real You.
-                </p>
-              </div> */}
-          {/* </div> */}
-          {/* </div> */}
+
+max-w-full text-sm tracking-[1.3px] leading-[1.8] 
+lg:max-w-[55%] px-2
+3xl:text-xl 3xl:leading-[1.7]
+4xl:text-3xl 4xl:leading-[1.7]
+">{d.description} </p>
+              <p className=" text-center font-normal text-gray-500 
+
+
+max-w-full text-sm tracking-[1.3px] leading-[1.8] 
+lg:max-w-[55%] px-2
+3xl:text-xl 3xl:leading-[1.7]
+4xl:text-3xl 4xl:leading-[1.7]
+">{d.description2}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+</div>
+
+      <div className='md:block hidden'>
+
+        <div className="font-gothic escape flex lg:pl-[10px] lg:pr-[100px] lg:pt-[50px] pl-[30px] pr-[60px]">
+          <div className="w-full lg:flex lg:items-center lg:justify-center gap-4 relative
+ before:content-[''] before:w-full lg:before:w-[85%] lg:before:top-[-40px] lg:before:right-0 before:h-full before:border before:border-black before:border-solid before:absolute before:-z-10 before:translate-x-8 lg:before:translate-x-0 ">
+            {/* Image */}
+            <div className=" flex flex-col  lg:flex-row lg:items-center lg:w-[48%]">
+              <h2
+                className='self-end relative tracking-[4px] text-xl md:text-[22px] 3xl:text-3xl 4xl:text-5xl my-[10px] lg:my-0 text-gray-600 lg:self-auto lg:-rotate-90 '>
+                {data[0].title}
+              </h2>
+              {/* style :before div */}
+              <Image
+                width={879}
+                height={534}
+                className="w-full object-cover"
+                alt="curator's thought"
+                src={data[0].image} />
+            </div>
+            {/* Text */}
+            <div className="flex flex-col gap-6 3xl:gap-8 py-[30px] pl-[80px] lg:w-[60%] lg:pl-[130px] ">
+              <h2
+                className='relative tracking-[4px] text-xl md:text-[25px] 3xl:text-3xl 4xl:text-5xl after:content-[""] after:h-[1px] after:w-10 3xl:after:w-14 4xl:after:w-20 after:bg-black after:absolute  after:top-[70%] uppercase'
+              >
+                {data[0].title}
+              </h2>
+              <p className="typo-body lg:w-[78%] text-gray-500 leading-[1.7]">
+                {data[0].description}
+              </p>
+              <p className="typo-body lg:w-[78%] text-gray-500 leading-[1.7]">
+                {data[0].description2}
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div className="font-gothic escape flex lg:pr-[10px] lg:pl-[100px] lg:pt-[50px] pl-[30px] pr-[60px] mt-10">
+          <div className="w-full lg:flex lg:items-center lg:justify-center gap-4 relative before:content-[''] before:w-full lg:before:w-[85%] lg:before:top-[-40px] lg:before:left-0  before:h-full before:border before:border-black before:border-solid before:absolute before:-z-10 before:-translate-x-8 lg:before:translate-x-0 ">
+            {/* Text */}
+            <div className="flex flex-col gap-6 3xl:gap-8 py-[30px] pl-[80px] lg:w-[60%] lg:pl-[150px]">
+              <h2
+                className='relative tracking-[4px] text-xl md:text-[25px] 3xl:text-3xl 4xl:text-5xl after:content-[""] after:h-[1px] after:w-10 3xl:after:w-14 4xl:after:w-20 after:bg-black after:absolute  after:top-[70%] uppercase'
+              >
+                {data[1].title}
+              </h2>
+              <p className="typo-body lg:w-[78%] text-gray-500 leading-[1.7]">
+                {data[1].description}
+              </p>
+              <p className="typo-body lg:w-[78%] text-gray-500 leading-[1.7]">
+                {data[1].description2}
+              </p>
+            </div>
+            {/* Image */}
+            <div className="flex flex-col lg:flex-row-reverse lg:items-center lg:w-[48%]">
+              <h2
+                className='self-end relative tracking-[4px] text-xl md:text-[22px] 3xl:text-3xl 4xl:text-5xl my-[10px] lg:my-0 text-gray-600 lg:self-auto lg:rotate-90 '>
+                {data[1].title}
+              </h2>
+              <Image
+                width={879}
+                height={534}
+                className="w-full object-cover"
+                alt="design philosophy"
+                src={data[1].image} />
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 
