@@ -5,24 +5,11 @@ import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import api from "@/utils/api";
+import { useSelector } from "react-redux";
 
 const BrowseByRecommendation = () => {
-  const [recommendationList, setRecommendationList] = useState([]);
+  const {data:recommendationList} = useSelector((state)=>state.recommendeds)
   const [loading, setLoading] = useState(true);
-
-  // Fetch recommendations from API
-  const getRecommendations = async () => {
-    try {
-      setLoading(true);
-      const res = await api.get("/store/eshop/recommended/get-all-recommended");
-      const data = await res.data;
-      setRecommendationList(data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   // Setup embla carousel with auto-scroll
   const [emblaRef] = useEmblaCarousel(
@@ -43,9 +30,11 @@ const BrowseByRecommendation = () => {
     ]
   );
 
-  useEffect(() => {
-    getRecommendations();
-  }, []);
+  useEffect(()=>{
+    if(recommendationList[0]?.name){
+      setLoading(false)
+    }
+  },[recommendationList])
 
   return (
     <section className="w-full max-w-7xl mx-auto overflow-hidden">
