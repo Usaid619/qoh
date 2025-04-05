@@ -23,6 +23,9 @@ importers:
       '@gsap/react':
         specifier: ^2.1.2
         version: 2.1.2(gsap@3.12.7)(react@19.1.0)
+      '@reduxjs/toolkit':
+        specifier: ^2.6.1
+        version: 2.6.1(react-redux@9.2.0(react@19.1.0)(redux@5.0.1))(react@19.1.0)
       axios:
         specifier: ^1.8.4
         version: 1.8.4
@@ -56,6 +59,9 @@ importers:
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.1.0)
+      react-redux:
+        specifier: ^9.2.0
+        version: 9.2.0(react@19.1.0)(redux@5.0.1)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -392,6 +398,17 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
+  '@reduxjs/toolkit@2.6.1':
+    resolution: {integrity: sha512-SSlIqZNYhqm/oMkXbtofwZSt9lrncblzo6YcZ9zoX+zLngRBrCOjK4lNLdkNucJF58RHOWrD9txT3bT3piH7Zw==}
+    peerDependencies:
+      react: ^16.9.0 || ^17.0.0 || ^18 || ^19
+      react-redux: ^7.2.1 || ^8.1.3 || ^9.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-redux:
+        optional: true
+
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
@@ -491,6 +508,9 @@ packages:
 
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+
+  '@types/use-sync-external-store@0.0.6':
+    resolution: {integrity: sha512-zFDAD+tlpf2r4asuHEj0XH6pY6i0g5NeAHPn+15wk3BV6JA69eERFXC1gyGThDkVa1zCyKr5jox1+2LbV/AMLg==}
 
   '@typescript-eslint/eslint-plugin@8.29.0':
     resolution: {integrity: sha512-PAIpk/U7NIS6H7TEtN45SPGLQaHNgB7wSjsQV/8+KYokAb2T/gloOA/Bee2yd4/yKVhPKe5LlaUGhAZk5zmSaQ==}
@@ -1247,6 +1267,9 @@ packages:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
 
+  immer@10.1.1:
+    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
+
   import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
     engines: {node: '>=6'}
@@ -1779,6 +1802,18 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
+  react-redux@9.2.0:
+    resolution: {integrity: sha512-ROY9fvHhwOD9ySfrF0wmvu//bKCQ6AeZZq1nJNtbDC+kk5DuSuNX/n6YWYF/SYy7bSba4D4FSz8DJeKY/S/r+g==}
+    peerDependencies:
+      '@types/react': ^18.2.25 || ^19
+      react: ^18.0 || ^19
+      redux: ^5.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      redux:
+        optional: true
+
   react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
     engines: {node: '>=0.10.0'}
@@ -1790,6 +1825,14 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
+  redux-thunk@3.1.0:
+    resolution: {integrity: sha512-NW2r5T6ksUKXCabzhL9z+h206HQw/NJkcLm1GPImRQ8IzfXwRGqjVhKJGauHirT0DAuyy6hjdnMZaRoAcy0Klw==}
+    peerDependencies:
+      redux: ^5.0.0
+
+  redux@5.0.1:
+    resolution: {integrity: sha512-M9/ELqF6fy8FwmkpnF0S3YKOqMyoWJ4+CS5Efg2ct3oY9daQvd/Pc71FpGZsVsbl3Cpb+IIcjBDUnnyBdQbq4w==}
+
   reflect.getprototypeof@1.0.10:
     resolution: {integrity: sha512-00o4I+DVrefhv+nX0ulyi3biSHCPDe+yLv5o/p6d/UVlirijB8E16FtfwSAi4g3tcqrQ4lRAqQSoFEZJehYEcw==}
     engines: {node: '>= 0.4'}
@@ -1797,6 +1840,9 @@ packages:
   regexp.prototype.flags@1.5.4:
     resolution: {integrity: sha512-dYqgNSZbDwkaJ2ceRd9ojCGjBq+mOm9LmtXnAnEGyHhN/5R7iDW2TRw3h+o/jCFxus3P2LfWIIiwowAjANm7IA==}
     engines: {node: '>= 0.4'}
+
+  reselect@5.1.1:
+    resolution: {integrity: sha512-K/BG6eIky/SBpzfHZv/dd+9JBFiS4SWV7FIujVyJRux6e45+73RaUHXLmIR1f7WOMaQ0U1km6qwklRQxpJJY0w==}
 
   resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
@@ -2058,6 +2104,11 @@ packages:
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
+
+  use-sync-external-store@1.5.0:
+    resolution: {integrity: sha512-Rb46I4cGGVBmjamjphe8L/UnvJD+uPPtTkNvX5mZgqdbavhI4EbgIWJiIHXJ8bc/i9EQGPRh4DwEURJ552Do0A==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -2369,6 +2420,16 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
+  '@reduxjs/toolkit@2.6.1(react-redux@9.2.0(react@19.1.0)(redux@5.0.1))(react@19.1.0)':
+    dependencies:
+      immer: 10.1.1
+      redux: 5.0.1
+      redux-thunk: 3.1.0(redux@5.0.1)
+      reselect: 5.1.1
+    optionalDependencies:
+      react: 19.1.0
+      react-redux: 9.2.0(react@19.1.0)(redux@5.0.1)
+
   '@rtsao/scc@1.1.0': {}
 
   '@rushstack/eslint-patch@1.11.0': {}
@@ -2451,6 +2512,8 @@ snapshots:
   '@types/json-schema@7.0.15': {}
 
   '@types/json5@0.0.29': {}
+
+  '@types/use-sync-external-store@0.0.6': {}
 
   '@typescript-eslint/eslint-plugin@8.29.0(@typescript-eslint/parser@8.29.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
@@ -3377,6 +3440,8 @@ snapshots:
 
   ignore@5.3.2: {}
 
+  immer@10.1.1: {}
+
   import-fresh@3.3.1:
     dependencies:
       parent-module: 1.0.1
@@ -3868,6 +3933,14 @@ snapshots:
 
   react-is@16.13.1: {}
 
+  react-redux@9.2.0(react@19.1.0)(redux@5.0.1):
+    dependencies:
+      '@types/use-sync-external-store': 0.0.6
+      react: 19.1.0
+      use-sync-external-store: 1.5.0(react@19.1.0)
+    optionalDependencies:
+      redux: 5.0.1
+
   react@19.1.0: {}
 
   read-cache@1.0.0:
@@ -3877,6 +3950,12 @@ snapshots:
   readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
+
+  redux-thunk@3.1.0(redux@5.0.1):
+    dependencies:
+      redux: 5.0.1
+
+  redux@5.0.1: {}
 
   reflect.getprototypeof@1.0.10:
     dependencies:
@@ -3897,6 +3976,8 @@ snapshots:
       get-proto: 1.0.1
       gopd: 1.2.0
       set-function-name: 2.0.2
+
+  reselect@5.1.1: {}
 
   resolve-from@4.0.0: {}
 
@@ -4272,6 +4353,10 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  use-sync-external-store@1.5.0(react@19.1.0):
+    dependencies:
+      react: 19.1.0
 
   util-deprecate@1.0.2: {}
 

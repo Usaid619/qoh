@@ -8,8 +8,8 @@ import ShoppingBenifit from '@/components/ui/ShoppingBenifit'
 import Trending from '@/components/ui/Trending'
 import React from 'react'
 import Testimonial from '@/components/ui/Testimonial'
-import BrowseByRecommendation from '@/components/BrowseByRecommendation'
-import BrowseByStyle from '@/components/BrowseByStyle'
+import BrowseByRecommendation from '@/components/ui/BrowseByRecommendation'
+import BrowseByStyle from '@/components/ui/BrowseByStyle'
 
 const page = () => {
   return (

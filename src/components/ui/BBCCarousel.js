@@ -33,7 +33,7 @@ const BBCCarousel = ({ slides }) => {
         <div className="embla__container flex -mx-3">
           {slides.map((slide, index) => (
             <Link
-              href={slide?.link || "#"}
+              href={`/${slide?.name?.toLowerCase().replaceAll(" ", "-")}` || "#"}
               key={slide?._id || index}
               className="relative px-3 w-full md:w-1/3 flex-shrink-0 overflow-hidden group"
             >
@@ -44,14 +44,14 @@ const BBCCarousel = ({ slides }) => {
                   alt="description"
                   loading="eager"
                   className="h-full w-full object-cover object-center block transition-transform duration-500 ease-in-out group-hover:scale-110"
-                  src={slide?.imageUrl}
+                  src={slide?.image?.url || "/"}
                 />
               </div>
               <h2
                 className="uppercase text-center absolute bottom-0 left-3 right-3 text-2xl tracking-widest text-black bg-white/70 bg-opacity-60 py-3 px-4"
       
               >
-                {slide?.title}
+                {slide?.name}
               </h2>
             </Link>
           ))}
