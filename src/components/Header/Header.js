@@ -174,12 +174,12 @@ const Header = ({ headerRef, isScrolled }) => {
             {/* Logo + Divider + Text Wrapper */}
 <Link
 href={"#"}
-  className={`relative w-full cursor-pointer flex items-center justify-center gap-4 transition-opacity duration-300 
+  className={`relative w-full cursor-pointer flex items-center justify-center xs:gap-4 gap-2 transition-opacity duration-300 
     ${isScrolled ? "lg:hidden" : "flex"}
   `}
 >
   {/* GULZ LOGO */}
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1019.63 571.17" className="h-14 transition-all duration-300">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1019.63 571.17" className="h-8 xs:h-14 transition-all duration-300">
     <path d="M690.33,508.94l23.35-23.35,23.35,23.35-23.35,23.35s-23.35-23.35-23.35-23.35Z"/>
     <path d="M355.64,155.05l84.84-70.32-2.34-3.11C398.45,41.92,343.96,1,284.03,1,191.88-3.77,101.68,76.2,73.87,162.83c9.34-3.11,18.68-3.89,28.8-3.89C113.13,109.58,192.28,15.01,284.03,6.38c83.49,3.86,126.09,58.38,126.09,70.83s-3.89,21.79-12.45,30.36l-42.81,46.7h0l.78.78Z"/>
     <path d="M660.76,243.51h-24.13v123.76c0,41.25-24.91,60.71-60.71,60.71s-66.94-15.57-66.94-62.27v-122.2h-24.13v-1.56h72.39v1.56h-23.35v122.2c0,38.92,12.45,60.71,44.37,60.71s56.82-21.79,56.82-59.16v-123.76h-23.35v-1.56h48.26v1.56h.78Z"/>
@@ -297,7 +297,7 @@ xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" className="border bor
 
         {/* search + location + hamburger menu */}
         <div className="content-center">
-          <div className="flex gap-2 items-center h-full">
+          <div className="flex gap-2  items-center h-full">
             {/* Search */}
             <svg
             onClick={() => handelsearchbtn()}
