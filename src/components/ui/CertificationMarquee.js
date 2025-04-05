@@ -1,55 +1,36 @@
-"use client";
 
-import React, { useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import AutoScroll from "embla-carousel-auto-scroll";
-import Autoplay from "embla-carousel-autoplay";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
+
+import React from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import AutoScroll from 'embla-carousel-auto-scroll'
+// import Autoplay from 'embla-carousel-autoplay'
 
 // Logic to be written
-const CertificationMarquee = ({ options }) => {
-  const location = usePathname();
-  const [emblaRef, emblaApi] = useEmblaCarousel(options,[
-    AutoScroll({
-      playOnInit: true,
-      stopOnInteraction: false,
-      startDelay: 0,
-      speed: 1.4,
-    }),
-  ]);
-  const [isPlaying, setIsPlaying] = useState(false);
+const CertificationMarquee = ({slides,options}) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    AutoScroll({ playOnInit: true , stopOnInteraction: false, startDelay:0, speed:1.6,})
+  ])
+  // const [isPlaying, setIsPlaying] = useState(false)
 
-  const slides=[{
-    imageUrl:"/assets/images/certifications/certification-1.png"},
-    {imageUrl:"/assets/images/certifications/certification-2.png"},
-    {imageUrl:"/assets/images/certifications/certification-3.png"},
-    {imageUrl:"/assets/images/certifications/certification-4.png"},
-    {imageUrl:"/assets/images/certifications/certification-5.png"},
-    {imageUrl:"/assets/images/certifications/certification-6.png"}]
+  
 
   return (
-    <div className="cursor-grab embla w-full">
-      <div className="embla__viewport overflow-hidden relative" ref={emblaRef}>
-        <div className=" embla__container flex">
-          {slides.map((slide, index) => (
-            <div
-              className=" flex-shrink-0 flex-grow-0 basis-2/4 md:basis-1/4"
-              key={index}
-            >
-              <div className="relative h-14 w-full xs:h-[70px] xs:w-full 3xl:h-[90px] 3xl:w-full 4xl:h-36 4xl:w-full">
-                <Image
-              fill
-              className="object-contain"
-              alt="certification"
-              src={slide.imageUrl} />
-              </div>
+    <div className="cursor-grab embla sm:w-9/12 w-full relative 3xl:py-7">
+      <div className="embla__viewport relative" ref={emblaRef}>
+        <div className="  embla__container">
+          {slides.map((slide,index) => (
+            <div className=" flex-shrink-0 flex-grow-0 basis-2/4 flex justify-center md:basis-1/4" key={index}>
+
+              <img src={slide.imageUrl} alt='images' className='h-14 sm:h-16' />
+
             </div>
           ))}
-        </div>
+        </div> 
+        {/* <div className=" bg-gradient-to-r from-gray-50 from-40% to-gray-100/10 w-2/12  sm:w-1/12 left-0 top-0  absolute inset-0"></div> */}
+        {/* <div className=" bg-gradient-to-r from-gray-100/10 to-40% to-gray-50  w-2/12  sm:w-1/12 h-full top-0 right-0  absolute "></div> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CertificationMarquee;
+export default CertificationMarquee
