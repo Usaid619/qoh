@@ -47,7 +47,16 @@ const BBCCarousel = ({ slides }) => {
                   src={slide?.imageUrl}
                 />
               </div>
-              <h2 className="uppercase text-center absolute bottom-0 left-3 right-3 text-black bg-white/70 py-3 px-4 text-[16px] lg:text-[20px]">
+              <h2
+                className="uppercase text-center absolute bottom-0 left-3 right-3 text-black bg-white/70 bg-opacity-60 py-3 px-4"
+                style={{
+                  fontFamily: "Century Gothic, sans-serif",
+                  fontSize: "18px",
+                  fontWeight: 600,
+                  letterSpacing: "0.24em",
+                  textTransform: "uppercase",
+                }}
+              >
                 {slide?.title}
               </h2>
             </Link>
