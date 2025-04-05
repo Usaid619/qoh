@@ -6,144 +6,46 @@ import SubMenu from "./SubMenu";
 import ImageSection from "./ImageSection";
 import Menu from "./Menu";
 import SecondarySubMenu from "./SecondarySubMenu";
-// import api from "@/src/utils/api";
-
-const data = [
-  {
-    id: 1,
-    name: "Diamond Rings",
-    items: [
-      { name: "Earrings", image: "/images/earrings.jpg" },
-      { name: "Necklaces", image: "/images/necklaces.jpg" },
-      { name: "Bracelets", image: "/images/bracelets.jpg" },
-    ],
-  },
-  {
-    id: 2,
-    name: "Diamond Earrings",
-    items: [
-      { name: "Minimalist", image: "/images/minimalist.jpg" },
-      { name: "Boho", image: "/images/boho.jpg" },
-      { name: "Vintage", image: "/images/vintage.jpg" },
-    ],
-  },
-  {
-    id: 3,
-    name: "Diamond Necklace",
-    items: [
-      { name: "Best Sellers", image: "/images/bestseller.jpg" },
-      { name: "New Arrivals", image: "/images/new.jpg" },
-      { name: "Limited Edition", image: "/images/limited.jpg" },
-    ],
-  },
-  {
-    id: 4,
-    name: "Diamond Bracelets",
-    items: [
-      { name: "Best Sellers", image: "/images/bestseller.jpg" },
-      { name: "New Arrivals", image: "/images/new.jpg" },
-      { name: "Limited Edition", image: "/images/limited.jpg" },
-    ],
-  },
-  {
-    id: 5,
-    name: "Kids Galaxy",
-    items: [
-      { name: "Best Sellers", image: "/images/bestseller.jpg" },
-      { name: "New Arrivals", image: "/images/new.jpg" },
-      { name: "Limited Edition", image: "/images/limited.jpg" },
-    ],
-  },
-];
+import api from "@/utils/api";
 
 const DropdownMenu = forwardRef(
   ({ onMouseEnter, onMouseLeave, setDropdownOpen }, ref) => {
-    const [categories, setCategories] = useState(data);
+    const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState();
-    const [hoveredItem, setHoveredItem] = useState();
+    const [recommendedList,setRecommendedList]=useState([])
 
     const handleCategoryHover = (category) => {
       setSelectedCategory(category);
-      if(category?.items && category?.items?.length>0){
-        setHoveredItem(category?.items[0]);
-      }else{
-        setHoveredItem(category);
+    };
+
+    const getCategoriesAndStyle = async () => {
+      try {
+        const res = await api.get("/store/eshop/categories/get-all-categories");
+        const data = await res.data;
+        console.log(data)
+        setCategories(data);
+      } catch (error) {
+        console.log(error);
       }
     };
 
-    const handleItemHover = (item) => {
-      setHoveredItem(item);
-    };
-
-    // const getCategories = async () => {
-    //   try {
-    //     const res = await api.get("/store/khw/categories/get-all-categories");
-    //     const data = await res.data;
-    //     const formattedData = data.map((item) => {
-    //       if (item.showInNav) {
-    //         item.link = `/${item.name.replace(/\s+/g, "-").toLowerCase()}`;
-    //         return item;
-    //       }
-    //     });
-    //     setCategories((prevMenu) =>
-    //       prevMenu.map((section) =>
-    //         section.id === 1
-    //           ? { ...section, items: formattedData }
-    //           : section,
-    //       ),
-    //     );
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-
-    // const getCollections = async () => {
-    //   try {
-    //     const res = await api.get("/store/khw/collections/get-all-collections");
-    //     const data = await res.data;
-    //     const collection = data.map((item) => {
-    //       if (item.showInCollection) {
-    //         item.link =
-    //           item.hasHomePage && item.pathOfHomePage
-    //             ? item.pathOfHomePage
-    //             : `/collection/${item.name.replace(/\s+/g, "-").toLowerCase()}`;
-    //         item.name = `${item.name} - ${item.tagline}`;
-    //         return item;
-    //       }
-    //     });
-
-    //     const navItem = data.filter((item) => {
-    //       if(item.showInNav){
-    //         item.link = item.hasHomePage && item.pathOfHomePage ? item.pathOfHomePage : `/collection/${item.name.replace(/\s+/g, "-").toLowerCase()}`
-    //         return item
-    //       }
-    //     });
-
-    //     setCategories((prevMenu) => {
-    //       const updatedMenu = prevMenu.map((section) =>
-    //         section.id === 2 ? { ...section, items: collection } : section,
-    //       );
-
-    //       const existingNames = new Set(updatedMenu.map((item) => item.name));
-    //       const uniqueNavItems = navItem.filter(
-    //         (item) => !existingNames.has(item.name),
-    //       );
-
-    //       return [...updatedMenu, ...uniqueNavItems];
-    //     });
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-
-    // useEffect(() => {
-    //   getCategories();
-    //   getCollections();
-    // }, []);
+    const getRecommendeds = async()=>{
+      try {
+        const res = await api.get("/store/eshop/recommended/get-all-recommended")
+        const data = await res.data
+        setRecommendedList(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
     useEffect(() => {
+      getCategoriesAndStyle();
+      getRecommendeds()
+    }, []);
+  
+    useEffect(() => {
       setSelectedCategory(categories[0]);
-      setHoveredItem(categories[0]?.items[0]);
     }, [categories]);
 
     return (
@@ -162,16 +64,12 @@ const DropdownMenu = forwardRef(
         />
         <SubMenu
           setDropdownOpen={setDropdownOpen}
-          items={selectedCategory?.items}
-          hoveredItem={hoveredItem}
-          onItemHover={handleItemHover}
+          hoveredItem={selectedCategory}
         />
-        <ImageSection hoveredItem={hoveredItem} />
+        <ImageSection hoveredCatUrl={selectedCategory?.image?.url} />
         <SecondarySubMenu 
           setDropdownOpen={setDropdownOpen}
-          // items={selectedCategory?.items}
-          hoveredItem={hoveredItem}
-          onItemHover={handleItemHover}/>
+          items={recommendedList}/>
       </div>
     );
   },
