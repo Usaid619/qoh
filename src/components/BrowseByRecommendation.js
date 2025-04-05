@@ -36,7 +36,7 @@ const BrowseByRecommendation = () => {
     [
       AutoScroll({
         playOnInit: true,
-        speed: 1.5,
+        speed: 0.8,
         stopOnInteraction: false,
         stopOnMouseEnter: true,
       }),
