@@ -17,7 +17,8 @@ const ShoppingBenifit = () => {
 
     <div className="text-center w-full flex flex-col md:gap-5 gap-4 font-gothic">
       <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">SHOPPING BENEFITS</h2>
-      <p className="text-base text-center">Exclusive deals, premium quality, and hassle-free shopping!</p>
+      <p className="text-[13px] lg:text-xl 
+ text-center">Exclusive deals, premium quality, and hassle-free shopping!</p>
 
 
       <div className="flex w-full flex-wrap justify-center mt-4 items-center md:gap-10 gap-3">

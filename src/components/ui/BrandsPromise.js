@@ -164,7 +164,8 @@ const BrandsPromise = () => {
 
 
         <h1 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">The Brand&apos;s Promise</h1>
-        <p className="text-[16px] text-center"> Pure,Natural diamonds. Designed to reflect the real you</p>
+        <p className="text-[13px] lg:text-xl 
+ text-center"> Pure,Natural diamonds. Designed to reflect the real you</p>
 
       </div>
       <div className="">

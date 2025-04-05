@@ -43,7 +43,8 @@ const Recommendation = () => {
            <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium  text-center">
           Browse by Recommendation
         </h2>
-        <span className="text-[16px] text-center">Handpicked Favourites, Just For you!</span>
+        <span className="text-[13px] lg:text-xl 
+ text-center">Handpicked Favourites, Just For you!</span>
         </div>
        
       <div className=" relative w-full">

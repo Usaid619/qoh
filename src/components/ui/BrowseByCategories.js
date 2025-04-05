@@ -36,7 +36,8 @@ const BrowseByCategories = ({data}) => {
      <div className=" md:-mx-[30px] lg:-mx-[57px] 3xl:-mx-[100px] flex flex-col items-center gap-4 w-full">
      {/* <DashedText text={data?.title} /> */}
      <h2 className='uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center'>browse by category</h2>
-     <span className='text-[16px] text-center'>Find the perfect piece for every ocassion!</span>
+     <span className='text-[13px] lg:text-xl 
+ text-center'>Find the perfect piece for every ocassion!</span>
      <BBCCarousel slides={landingSlides} />
     
    </div>
