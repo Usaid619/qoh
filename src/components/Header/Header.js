@@ -18,7 +18,7 @@ import Image from "next/image";
 const Search = dynamic(() => import("./Search"));
 
 // Unique Components
-// import Marquee from "./Marquee";
+import Marquee from "./Marquee";
 const DropdownMenu = dynamic(() => import("./DropdownMenu"));
 const HamburgerMenu = dynamic(() => import("./HamBurgerMenu"));
 
@@ -130,7 +130,7 @@ const Header = ({ headerRef, isScrolled }) => {
   return (
     <header
   ref={headerRef}
-  className={`flex flex-col lg:gap-1 3xl:gap-2 font-gothic z-50 left-0 top-0 w-full
+  className={`flex flex-col lg:gap-1 3xl:gap-2 font-gothic z-50 left-0 top-0 w-full hover:bg-white hover:text-black
     ${
       isScrolled
         ? "fixed bg-white text-black shadow-lg" // Fixed header with scroll
@@ -138,9 +138,9 @@ const Header = ({ headerRef, isScrolled }) => {
     }
   `}
 >
-      {/* <Marquee /> */}
+      <Marquee />
       {/* header */}
-      <div className="flex items-center lg:min-h-[auto] min-h-[78px] py-8 sm:py-0 relative w-full lg:items-center justify-between px-3 lg:px-12 3xl:px-16 4xl:px-24">
+      <div className="flex items-center lg:min-h-[auto] min-h-[78px] sm:py-0 relative w-full lg:items-center justify-between px-3 lg:px-12">
         <svg
           className="h-6 w-6 cursor-pointer lg:hidden"
           onClick={handleHamburgerClick}
@@ -221,6 +221,16 @@ const Header = ({ headerRef, isScrolled }) => {
   relative capitalize text-center text-wrap 
 
   text-[6px] xs:text-[10px] leading-[1.4] tracking-widest whitespace-nowrap`}>THE JEWELS GALLERIA</span>
+  {/* <Image
+    height={1408}
+    width={2751}
+    alt="business logo"
+    className={`absolute inset-0 object-contain transition-opacity duration-300 -translate-y-1/2 top-1/2 ${
+      location !== "/" || isScrolled ? "opacity-100" : "opacity-0"
+    }`}
+    src="/assets/images/header/qoh-white.svg"
+    priority
+  /> */}
   </div>
 </div>
 
@@ -272,13 +282,13 @@ const Header = ({ headerRef, isScrolled }) => {
         </div>
       </div>
 
-      {hamburgerOpen && (
+      
         <HamburgerMenu
           setHamburgerOpen={setHamburgerOpen}
           hamburgerTimeline={hamburgerTimeline}
           ref={hamburgerRef}
         />
-      )}
+    
      
         <DropdownMenu
           setDropdownOpen={setDropdownOpen}

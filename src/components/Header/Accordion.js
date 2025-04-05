@@ -23,7 +23,7 @@ const Accordion = ({
   useAccordionAnimation(isOpen, contentRef);
 
   return (
-    <div className=" flex flex-col gap-1 max-h-screen ">
+    <div className=" flex flex-col max-h-screen ">
       <button
       name="expand"
         onClick={() => {
@@ -35,7 +35,7 @@ const Accordion = ({
             navigate.push(category.link ? category.link : location);
           }
         }}
-        className="text-sm font-light w-full text-left py-1 px-3 flex justify-between items-center leading-[1.6] text-black "
+        className="text-sm font-light w-full text-left py-1 flex justify-between items-center leading-[1.6] text-black "
       >
         {category?.name}
         {category?.items?.length > 1 && (
