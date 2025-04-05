@@ -15,11 +15,14 @@ const Trending = () => {
           alt="Trending diamond rings collection"
           className='object-cover w-[430px] h-[490px] rounded-sm'
         />
-        <img
-        className='lg:block hidden absolute top-[40%] -translate-y-1/2 left-[70%] w-[288px] h-[306px] rotate-6'
-        src='/assets/images/ring.png'
-        alt='Floating ring'
-      />
+        <div className=" w-[288px] h-[306px] lg:block hidden absolute top-[40%] -translate-y-1/2 left-[70%]">
+  <img
+    className='w-full h-full rotate-6 relative z-10'
+    src='/assets/images/ring.png'
+    alt='Floating ring'
+  />
+  <div className="absolute top-[74%] left-[40%] w-[45%] h-[9px] bg-black opacity-65 rounded-full blur-md z-0"></div>
+</div>
       </div>
 
       {/* Right Content Section */}
