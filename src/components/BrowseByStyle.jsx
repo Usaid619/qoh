@@ -1,20 +1,39 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import api from "@/utils/api";
+import useEmblaCarousel from "embla-carousel-react";
+import AutoScroll from "embla-carousel-auto-scroll";
 
 const BrowseByStyle = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [activeCategory, setActiveCategory] = useState("");
   const [activeData, setActiveData] = useState(null);
-  const scrollContainerRef = useRef(null);
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // State for category pagination
+  const [emblaRef] = useEmblaCarousel(
+    {
+      loop: true,
+      dragFree: true,
+      containScroll: "keepSnaps",
+      align: "start",
+      slidesToScroll: 1,
+      direction: "backward",
+    },
+    [
+      AutoScroll({
+        playOnInit: true,
+        speed: 1,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+        direction: "right",
+      }),
+    ]
+  );
+
   const [categoryPage, setCategoryPage] = useState(0);
-  const categoriesPerPage = 4; // For mobile screens, show fewer categories
+  const categoriesPerPage = 4;
 
-  // Get current page categories
   const getVisibleCategories = () => {
     return categoryList.slice(
       categoryPage * categoriesPerPage,
@@ -24,9 +43,9 @@ const BrowseByStyle = () => {
 
   const totalPages = Math.ceil((categoryList.length || 0) / categoriesPerPage);
 
-  // Get Categories data from API
   const getCategoriesAndStyle = async () => {
     try {
+      setIsLoading(true);
       const res = await api.get("/store/eshop/categories/get-all-categories");
       const data = await res.data;
       setCategoryList(data);
@@ -35,10 +54,11 @@ const BrowseByStyle = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  // Get active category data
   const getActiveData = () => {
     categoryList?.forEach((category) => {
       if (category.name === activeCategory) {
@@ -55,11 +75,9 @@ const BrowseByStyle = () => {
     getActiveData();
   }, [activeCategory, categoryList]);
 
-  // Get display items from API data only
   const getDisplayItems = () => {
     if (!activeData?.styles) return [];
 
-    // Sort items so "All X" items appear first
     return activeData.styles.sort((a, b) => {
       const aIsAll = a.itisAllType === true;
       const bIsAll = b.itisAllType === true;
@@ -72,83 +90,6 @@ const BrowseByStyle = () => {
 
   const displayItems = getDisplayItems();
 
-  // Infinite scrolling animation without duplicating items
-  useEffect(() => {
-    if (!displayItems.length || !scrollContainerRef.current) return;
-
-    let animationFrameId;
-    const container = scrollContainerRef.current;
-    const scrollSpeed = 1; // pixels per frame
-
-    // Animation function for circular scrolling
-    const animate = () => {
-      if (!isAutoScrolling || !container) return;
-
-      // Get container dimensions
-      const containerWidth = container.clientWidth;
-      const scrollWidth = container.scrollWidth;
-
-      // Only scroll if content is wider than container
-      if (scrollWidth > containerWidth) {
-        // If we've reached the end, gradually start moving items
-        if (container.scrollLeft >= scrollWidth - containerWidth) {
-          // Create a smooth transition back to start
-          // Move a bit further, then jump back to start
-          const currentPosition = container.scrollLeft;
-
-          // Create easing effect for reset
-          if (currentPosition > scrollWidth - containerWidth + 10) {
-            // Once we're a little past the end, reset to start
-            container.scrollLeft = 0;
-          } else {
-            // Continue scrolling
-            container.scrollLeft += scrollSpeed;
-          }
-        } else {
-          // Normal scrolling
-          container.scrollLeft += scrollSpeed;
-        }
-      }
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    // Start animation
-    if (isAutoScrolling) {
-      animationFrameId = requestAnimationFrame(animate);
-    }
-
-    // Pause/resume on hover
-    const handleMouseEnter = () => {
-      cancelAnimationFrame(animationFrameId);
-      setIsAutoScrolling(false);
-    };
-
-    const handleMouseLeave = () => {
-      setIsAutoScrolling(true);
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    container.addEventListener("mouseenter", handleMouseEnter);
-    container.addEventListener("mouseleave", handleMouseLeave);
-
-    // Clean up
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      container.removeEventListener("mouseenter", handleMouseEnter);
-      container.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, [displayItems, isAutoScrolling]);
-
-  // Reset position when category changes
-  useEffect(() => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft = 0;
-    }
-    setIsAutoScrolling(true);
-  }, [activeCategory]);
-
-  // Reset active category if it's not in the current page
   useEffect(() => {
     const visibleCategories = getVisibleCategories();
     const categoryNames = visibleCategories.map((cat) => cat.name);
@@ -158,13 +99,12 @@ const BrowseByStyle = () => {
     }
   }, [categoryPage]);
 
-  // Item card component
   const ItemCard = ({ item }) => (
-    <div className="flex-shrink-0 mx-1 w-20 sm:w-24 md:w-28 lg:w-60 flex flex-col items-center">
-      <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-24 lg:h-24 flex justify-center items-center">
+    <div className="flex-shrink-0 mx-2 w-32 xs:w-32 sm:w-32 md:w-32 lg:w-32 flex flex-col items-center">
+      <div className="relative w-16 h-16 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-16 lg:h-16 flex justify-center items-center">
         <div className="w-full h-full flex justify-center items-center p-1">
           {item.image?.url ? (
-            <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-24 lg:h-24">
+            <div className="relative w-20 h-20 sm:w-20 sm:h-20 md:w-20 md:h-20 lg:w-20 lg:h-20">
               <Image
                 src={item.image.url}
                 alt={item.name}
@@ -187,7 +127,6 @@ const BrowseByStyle = () => {
 
   return (
     <section className="w-full max-w-7xl mx-auto overflow-hidden py-4 sm:py-6 px-2 sm:px-4">
-      {/* Responsive heading */}
       <div className="mb-2 sm:mb-3">
         <h1
           className="text-center text-2xl sm:text-3xl md:text-4xl"
@@ -205,8 +144,7 @@ const BrowseByStyle = () => {
           BROWSE BY STYLE
         </h1>
       </div>
-      {/* Responsive subtitle */}
-      <div className="text-center mb-3 text-sm sm:text-base md:text-xl">
+      <div className="text-center mb-6 text-sm sm:text-base md:text-xl">
         <p
           className="text-center text-xs sm:text-sm md:text-base"
           style={{
@@ -225,13 +163,12 @@ const BrowseByStyle = () => {
         </p>
       </div>
 
-      {/* Category Buttons - Fixed for small screens */}
-      <div className="relative max-w-full mx-auto sm:mb-6 px-1 sm:px-4">
+      <div className="relative max-w-full mx-auto mb-6 px-1 sm:px-4">
         <div className="flex flex-wrap justify-center items-center gap-2">
           {getVisibleCategories().map((category) => (
             <button
               key={category._id}
-              className={`relative overflow-hidden group flex-1 min-w-[70px] max-w-[100px] h-[35px] sm:h-[35px] border border-gray-300 rounded-[4px] transition-colors duration-300 ${
+              className={`relative overflow-hidden group flex-1 min-w-[70px] max-w-[130px] h-[35px] sm:h-[35px] border border-gray-300 rounded-[4px] transition-colors duration-300 ${
                 activeCategory === category.name
                   ? "text-white border-purple-600 bg-black"
                   : "text-black hover:text-white"
@@ -239,7 +176,7 @@ const BrowseByStyle = () => {
               style={{
                 padding: "1px 1px",
                 borderWidth: "1px",
-                fontSize: "12px", // Smaller font size for mobile
+                fontSize: "12px",
               }}
               onClick={() => setActiveCategory(category.name)}
             >
@@ -257,7 +194,7 @@ const BrowseByStyle = () => {
             </button>
           ))}
 
-          {/* Next Arrow Button - Responsive size */}
+          {/* Next Arrow Button */}
           {totalPages > 1 && (
             <button
               className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border border-gray-300 hover:bg-gray-100 transition-colors"
@@ -282,27 +219,37 @@ const BrowseByStyle = () => {
         </div>
       </div>
 
-      <div className="bg-gray-50 rounded-xl border border-gray-200 p-3 sm:p-4 shadow-sm max-w-5xl mx-auto">
+      <div className="bg-gray-50  rounded-xl border border-gray-200 p-3 sm:p-4 shadow-sm max-w-2xl   mx-auto">
         <div className="relative overflow-hidden w-full">
-          {displayItems.length > 0 ? (
+          {isLoading ? (
+            <div className="flex justify-center items-center py-8">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+            </div>
+          ) : displayItems.length > 0 ? (
             <div className="relative w-full">
               <div className="absolute top-0 bottom-0 left-0 w-8 z-10 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none"></div>
               <div className="absolute top-0 bottom-0 right-0 w-8 z-10 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none"></div>
 
-              {/* Scroll container for infinite scroll without duplicates */}
-              <div
-                ref={scrollContainerRef}
-                className="flex overflow-x-auto w-full scrollbar-hide"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              >
-                {displayItems.map((item) => (
-                  <ItemCard key={item._id} item={item} />
-                ))}
+              {/* Embla carousel for infinite scrolling */}
+              <div className="embla overflow-hidden" ref={emblaRef}>
+                <div className="flex">
+                  {displayItems.length === 1
+                    ? [displayItems[0]].map((item) => (
+                        <ItemCard key={item._id} item={item} />
+                      ))
+                    : displayItems.length < 7
+                    ? [...displayItems, ...displayItems].map((item, index) => (
+                        <ItemCard key={`${item._id}-${index}`} item={item} />
+                      ))
+                    : displayItems.map((item) => (
+                        <ItemCard key={item._id} item={item} />
+                      ))}
+                </div>
               </div>
             </div>
           ) : (
             <div className="py-8 text-center text-gray-500">
-              Loading styles or no styles available for this category.
+              No styles available for this category.
             </div>
           )}
         </div>
