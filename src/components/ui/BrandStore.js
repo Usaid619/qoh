@@ -16,9 +16,8 @@ const BrandStore = () => {
             className=" font-normal text-gray-500 
             max-w-full tracking-[1.3px] leading-[1.8] 
             lg:max-w-[55%] px-2
-            3xl:text-xl 3xl:leading-[1.7]
-            4xl:text-3xl 4xl:leading-[1.7]
-            text-base text-center
+            text-[13px] lg:text-xl 
+            text-center
           "
           >
             You can visit our store to examine our wide collection or connect with us for Customisations, Video Shopping, Door delivery & Payment options . Read more 

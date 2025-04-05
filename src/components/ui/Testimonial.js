@@ -91,7 +91,8 @@ const Testimonial = () => {
         Testimonals
         {/* <span className="flex border-b-2 border-[#58282a] w-16 sm:w-20 md:w-24 mt-2 mx-auto"></span> */}
       </h1>
-      <h1 className="text-[16px] text-[#5E5E5E] mb-5 mt-2 px-2 text-center ">Real stories, real sparkle – hear from our happy customers!</h1>
+      <h1 className="text-[#5E5E5E] mb-5 mt-2 px-2 text-[13px] lg:text-xl 
+ text-center">Real stories, real sparkle – hear from our happy customers!</h1>
 
       </div>
 

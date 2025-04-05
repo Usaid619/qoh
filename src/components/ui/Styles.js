@@ -73,7 +73,8 @@ const Styles = () => {
           <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">
             Browse by Style
           </h2>
-          <span className="text-[16px] text-center">Timeless classics to modern trends - All in one place!</span>
+          <span className="text-[13px] lg:text-xl 
+ text-center">Timeless classics to modern trends - All in one place!</span>
         </div>
 
 

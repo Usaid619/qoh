@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import useMarquee from "@/src/hooks/useMarquee";
+import useMarquee from "../../hooks/useMarquee"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

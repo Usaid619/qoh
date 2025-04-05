@@ -5,20 +5,14 @@ import { useGSAP } from "@gsap/react";
 
 const useHamburgerAnimation = (hamburgerOpen, hamburgerRef) => {
   useGSAP(() => {
-    if (hamburgerOpen) {
-      gsap.fromTo(
-        hamburgerRef.current,
-        {
-          scaleY: 0,
-          transformOrigin: "top",
-        },
-        {
-          scaleY: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        },
-      );
-    }
+    if (!hamburgerRef.current) return;
+
+    // Animate in or out based on the state
+    gsap.to(hamburgerRef.current, {
+      x: hamburgerOpen ? 0 : "-100%",
+      duration: 0.4,
+      ease: "power2.inOut",
+    });
   }, [hamburgerOpen]);
 };
 
