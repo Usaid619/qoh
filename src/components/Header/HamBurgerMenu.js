@@ -100,13 +100,13 @@ const HamburgerMenu = forwardRef(
     return (
       <div
         ref={ref}
-        className="flex flex-col gap-10 shadow-lg fixed z-10 top-0 left-0 -translate-x-full h-screen w-full bg-white text-black pt-20 px-10 overflow-y-auto"
+        className="flex flex-col gap-7 shadow-lg fixed z-10 top-0 left-0 -translate-x-full h-screen w-full bg-white text-black pt-20 px-10 overflow-y-auto"
       >
         <FontAwesomeIcon className="h-6 w-6 absolute top-5 right-5 cursor-pointer" onClick={()=>{
          hamburgerTimeline.current.reverse();
          setHamburgerOpen(false);
         }} icon={faXmark}/>
-          <div className="flex items-center gap-3 border-b">
+          <div className="flex items-center gap-3 border-b pb-1">
              <FontAwesomeIcon className="text-black" icon={faSearch} />
              <input className="w-full p-2 text-black" type="search" placeholder="What are you looking for?"/>
           </div>
@@ -128,7 +128,7 @@ const HamburgerMenu = forwardRef(
           
 
         <div className="flex flex-col gap-3">
-        <div className="flex items-center gap-3 border-t">
+        <div className="flex items-center gap-3 border-t pt-2">
              <FontAwesomeIcon className="text-black" icon={faSearch} />
              <span className="text-sm font-light w-full text-left py-1 px-3 flex justify-between items-center leading-[1.6] text-black ">Login</span>
           </div>
