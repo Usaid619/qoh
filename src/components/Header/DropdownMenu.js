@@ -1,48 +1,21 @@
 "use client";
 
-// import { categories } from "@/src/data/constants";
 import { forwardRef, useEffect, useState } from "react";
 import SubMenu from "./SubMenu";
 import ImageSection from "./ImageSection";
 import Menu from "./Menu";
 import SecondarySubMenu from "./SecondarySubMenu";
-import api from "@/utils/api";
+import { useSelector } from "react-redux";
 
 const DropdownMenu = forwardRef(
   ({ onMouseEnter, onMouseLeave, setDropdownOpen }, ref) => {
-    const [categories, setCategories] = useState([]);
+    const {data:categories} = useSelector((state)=>state.category)
+    const {data:recommendedList} = useSelector((state)=>state.recommendeds)
     const [selectedCategory, setSelectedCategory] = useState();
-    const [recommendedList,setRecommendedList]=useState([])
 
     const handleCategoryHover = (category) => {
       setSelectedCategory(category);
     };
-
-    const getCategoriesAndStyle = async () => {
-      try {
-        const res = await api.get("/store/eshop/categories/get-all-categories");
-        const data = await res.data;
-        console.log(data)
-        setCategories(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    const getRecommendeds = async()=>{
-      try {
-        const res = await api.get("/store/eshop/recommended/get-all-recommended")
-        const data = await res.data
-        setRecommendedList(data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
-    useEffect(() => {
-      getCategoriesAndStyle();
-      getRecommendeds()
-    }, []);
   
     useEffect(() => {
       setSelectedCategory(categories[0]);

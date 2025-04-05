@@ -1,14 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import api from "@/utils/api";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
+import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const BrowseByStyle = () => {
-  const [categoryList, setCategoryList] = useState([]);
+  const {data:categoryList} = useSelector((state)=>state.category)
   const [activeCategory, setActiveCategory] = useState("");
-  const [activeData, setActiveData] = useState(null);
+  const [activeData, setActiveData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   const [emblaRef] = useEmblaCarousel(
@@ -43,49 +44,37 @@ const BrowseByStyle = () => {
 
   const totalPages = Math.ceil((categoryList.length || 0) / categoriesPerPage);
 
-  const getCategoriesAndStyle = async () => {
-    try {
-      setIsLoading(true);
-      const res = await api.get("/store/eshop/categories/get-all-categories");
-      const data = await res.data;
-      setCategoryList(data);
-      if (data.length > 0) {
-        setActiveCategory(data[0]?.name);
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const getActiveData = () => {
     categoryList?.forEach((category) => {
-      if (category.name === activeCategory) {
+      if (category?.name === activeCategory) {
         setActiveData(category);
       }
     });
   };
 
-  useEffect(() => {
-    getCategoriesAndStyle();
-  }, []);
 
+  useEffect(()=>{
+    if (categoryList.length > 0 && categoryList[0]) {
+      setActiveCategory(categoryList[0]?.name);
+      setIsLoading(false)
+    }
+  },[categoryList])
   useEffect(() => {
     getActiveData();
-  }, [activeCategory, categoryList]);
+  }, [activeCategory]);
 
   const getDisplayItems = () => {
     if (!activeData?.styles) return [];
 
-    return activeData.styles.sort((a, b) => {
+    let data =  [...activeData.styles].sort((a, b) => {
       const aIsAll = a.itisAllType === true;
       const bIsAll = b.itisAllType === true;
-
+    
       if (aIsAll && !bIsAll) return -1;
       if (!aIsAll && bIsAll) return 1;
       return 0;
     });
+    return data;
   };
 
   const displayItems = getDisplayItems();
@@ -99,8 +88,8 @@ const BrowseByStyle = () => {
     }
   }, [categoryPage]);
 
-  const ItemCard = ({ item }) => (
-    <div className="flex-shrink-0 mx-2 w-32 xs:w-32 sm:w-32 md:w-32 lg:w-32 flex flex-col items-center">
+  const ItemCard = ({ item, index }) => (
+    <Link href={index===0?`/${activeData?.name?.toLowerCase().replaceAll(" ", "-")}`:`/${activeData?.name?.toLowerCase().replaceAll(" ", "-")}?style=${item.name?.toLowerCase().replaceAll(" ", "-")}`} className="flex-shrink-0 mx-2 w-32 xs:w-32 sm:w-32 md:w-32 lg:w-32 flex flex-col items-center cursor-pointer">
       <div className="relative w-16 h-16 sm:w-16 sm:h-16 md:w-16 md:h-16 lg:w-16 lg:h-16 flex justify-center items-center">
         <div className="w-full h-full flex justify-center items-center p-1">
           {item.image?.url ? (
@@ -122,7 +111,7 @@ const BrowseByStyle = () => {
       <p className="text-center text-[10px] sm:text-xs font-medium w-full truncate mt-1">
         {item.name}
       </p>
-    </div>
+    </Link>
   );
 
   return (
@@ -217,15 +206,15 @@ const BrowseByStyle = () => {
               <div className="embla overflow-hidden" ref={emblaRef}>
                 <div className="flex">
                   {displayItems.length === 1
-                    ? [displayItems[0]].map((item) => (
-                        <ItemCard key={item._id} item={item} />
+                    ? [displayItems[0]].map((item,index) => (
+                        <ItemCard key={item._id} index={index} item={item} />
                       ))
                     : displayItems.length < 7
                     ? [...displayItems, ...displayItems].map((item, index) => (
-                        <ItemCard key={`${item._id}-${index}`} item={item} />
+                        <ItemCard key={`${item._id}-${index}`} index={index} item={item} />
                       ))
-                    : displayItems.map((item) => (
-                        <ItemCard key={item._id} item={item} />
+                    : displayItems.map((item,index) => (
+                        <ItemCard key={item._id} index={index} item={item} />
                       ))}
                 </div>
               </div>
