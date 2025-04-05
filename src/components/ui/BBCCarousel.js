@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
 import {
   PrevButton,
@@ -10,22 +10,15 @@ import {
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
-const BBCCarousel = ({slides}) => {
+const BBCCarousel = ({ slides }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "center",
-    slidesToScroll: "auto",
-    loop:true
-  })
+    slidesToScroll: 1, // Set to scroll 1 slide at a time
+    loop: false,
+  });
 
-  
-  
- 
-
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi);
+  const { selectedIndex, getDotTransform } = useDotButton(emblaApi);
 
   const {
     prevBtnDisabled,
@@ -34,77 +27,74 @@ const BBCCarousel = ({slides}) => {
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
-  useGSAP(() => {
-    const dots = document.querySelectorAll(".embla__dot")
-  
-    if (dots.length === 0) return;
-  
-    gsap.fromTo(
-      dots,
-      { x: 0 },
-      {
-        x: 10,
-        repeat: -1,
-        yoyo: true,
-        stagger: 0.1,
-        duration: 0.4,
-        ease: "power1.inOut",
-      }
-    )
-  }, [selectedIndex]);
-  
-  
-
-
   return (
-    // Adjust to slide 3 images per slide
     <div className="embla mt-2 flex flex-col gap-4 w-full">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container flex -mx-3">
-        {slides.map((slide, index) => (
+          {slides.map((slide, index) => (
             <Link
-            href={slide?.link || "#"}
+              href={slide?.link || "#"}
               key={slide?._id || index}
-              className="relative px-3 w-full md:w-1/3 flex-shrink-0"
+              className="relative px-3 w-full md:w-1/3 flex-shrink-0 overflow-hidden group"
             >
-              <Image
-                width={1536}
-                height={1536}
-                alt="description"
-                loading="eager"
-                className="h-full w-full object-cover object-center block "
-                src={slide?.imageUrl}
-              />
-            
-            <h2 className="uppercase text-center absolute bottom-0 left-3 right-3 text-black bg-white/70 py-3 px-4 text-[16px] lg:text-[20px]">
+              <div className="overflow-hidden">
+                <Image
+                  width={1536}
+                  height={1536}
+                  alt="description"
+                  loading="eager"
+                  className="h-full w-full object-cover object-center block transition-transform duration-500 ease-in-out group-hover:scale-110"
+                  src={slide?.imageUrl}
+                />
+              </div>
+              <h2 className="uppercase text-center absolute bottom-0 left-3 right-3 text-black bg-white/70 py-3 px-4 text-[16px] lg:text-[20px]">
                 {slide?.title}
               </h2>
-              
             </Link>
           ))}
         </div>
       </div>
-      <div className={"embla__controls"}>
-        <div className="embla__buttons justify-between md:justify-center px-2">
+      <div className="embla__controls">
+        {/* Updated navigation controls to be centered like in the second image */}
+        <div className="embla__buttons flex items-center justify-center gap-4 px-2">
           <PrevButton
-            className="flex items-center md:justify-center justify-start h-16 w-16 3xl:h-20 3xl:w-20 4xl:h-32 4xl:w-32"
             onClick={onPrevButtonClick}
             disabled={prevBtnDisabled}
+            className="flex items-center justify-center h-8 w-8"
           />
-          <div className="embla__dots ">
-  {scrollSnaps.map((_, index) => (
-  <DotButton
-  key={index}
-  onClick={() => onDotButtonClick(index)}                                                                             
-  className="embla__dot h-2 w-2 3xl:h-3 3xl:w-3 4xl:h-4 4xl:w-4 border border-black rounded-full"
-/>
 
-  ))}
-</div>
+          <div className="embla__dots flex items-center justify-center space-x-4">
+            {/* Static dots with animation */}
+            <DotButton
+              key={0}
+              dotIndex={0}
+              transform={getDotTransform(0)}
+              className={`embla__dot h-2 w-2 lg:h-2 lg:w-2 3xl:h-3 3xl:w-3 4xl:h-4 4xl:w-4 border border-black rounded-full ${
+                0 === selectedIndex % 3 ? "bg-black" : "bg-black"
+              }`}
+            />
+            <DotButton
+              key={1}
+              dotIndex={1}
+              transform={getDotTransform(1)}
+              className={`embla__dot h-2 w-2 lg:h-2 lg:w-2 3xl:h-3 3xl:w-3 4xl:h-4 4xl:w-4 border border-black rounded-full ${
+                1 === selectedIndex % 3 ? "bg-black" : "bg-black"
+              }`}
+            />
+            <DotButton
+              key={2}
+              dotIndex={2}
+              transform={getDotTransform(2)}
+              className={`embla__dot h-2 w-2 lg:h-2 lg:w-2 3xl:h-3 3xl:w-3 4xl:h-4 4xl:w-4 border border-black rounded-full ${
+                2 === selectedIndex % 3 ? "bg-black" : "bg-black"
+              }`}
+            />
+          </div>
+
           <NextButton
-            className="flex items-center md:justify-center justify-end h-16 w-16 3xl:h-20 3xl:w-20 4xl:h-32 4xl:w-32"
             onClick={onNextButtonClick}
             disabled={nextBtnDisabled}
+            className="flex items-center justify-center h-8 w-8"
           />
         </div>
       </div>
