@@ -93,7 +93,7 @@ const BrowseByRecommendation = () => {
             className="embla w-full hover:cursor-pointer active:cursor-grabbing"
             ref={emblaRef}
           >
-            <div className="flex gap-10 md:gap-28 px-14 sm:px-14 lg:gap-24 md:px-28">
+            <div className="flex gap-10 md:gap-10 px-14 sm:px-14 lg:gap-10 md:px-14">
               {recommendationList.map((item) => (
                 <div
                   key={item?._id}
@@ -105,18 +105,18 @@ const BrowseByRecommendation = () => {
                     href={`/shop?recommended=${item?.name?.toLowerCase()}`}
                     className="flex justify-center flex-col items-center"
                   >
-                    <div className="bg-gray-200 rounded-full p-3 sm:p-6 mb-2 sm:mb-3 w-20 h-20 flex items-center justify-center">
-                      <div className="w-10 h-8 lg:w-[40px] lg:h-[40px] md:w-8 md:h-8 sm:h-8 sm:w-8 relative">
+                    <div className="bg-gray-200 rounded-full p-3 sm:p-4 mb-2 sm:mb-3 w-16 h-16 flex items-center justify-center">
+                      <div className="w-10 h-8 lg:w-[50px] lg:h-[50px] md:w-8 md:h-8 sm:h-8 sm:w-8 relative">
                         <Image
                           src={item?.image?.url || "/"}
                           alt={item?.name}
                           fill
-                          sizes="(max-width: 1024px) 32px, 2.5vw"
+                          sizes="(max-width: 1024px) 40px, 2.5vw"
                           className="object-contain"
                         />
                       </div>
                     </div>
-                    <p className="uppercase text-center text-xs tracking-[0.3em] mt-2 text-gray-700">
+                    <p className="uppercase text-center text-xs tracking-[0.3em]  text-gray-700">
                       {item?.name}
                     </p>
                   </Link>
