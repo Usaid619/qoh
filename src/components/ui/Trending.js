@@ -38,7 +38,7 @@ const Trending = () => {
 
         {/* Floating Ring Image */}
       <img
-        className='lg:hidden block absolute top-1/2 -translate-y-1/2 right-2 h-[86px] w-[86px] lg:w-[288px] lg:h-[306px] rotate-1'
+        className='lg:hidden block absolute top-1/2 -translate-y-1/2 right-2 h-[86px] w-[86px] rotate-1'
         src='/assets/images/ring.png'
         alt='Floating ring'
       />
