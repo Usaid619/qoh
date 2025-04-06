@@ -8,15 +8,15 @@ const BrandStore = () => {
   
 
   return (
-    <div className="flex flex-col gap-4 font-gothic">
+    <div className="flex flex-col gap-4 font-gothic w-full">
       <div className="flex flex-col justify-center items-center">
         <div className="flex flex-col gap-4 3xl:gap-6 4xl:gap-7 justify-center items-center ">
-          <h1 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">The Khwaahish Store</h1>
+          <h1 className="uppercase text-[24px] md:text-[35px] tracking-wide font-medium text-center">The Queen of Hearts Store</h1>
           <p
             className=" font-normal text-gray-500 
-            max-w-full tracking-[1.3px] leading-[1.8] 
-            lg:max-w-[55%] px-2
-            text-[13px] lg:text-xl 
+            max-w-full leading-[1.8] 
+            lg:max-w-[55%] px-2 
+            text-[13px] md:text-[15px] 
             text-center
           "
           >
@@ -29,7 +29,7 @@ const BrandStore = () => {
 
       <div className="md:flex justify-center w-full h-[620px]  z-20 relative">
         <Image
-          src='/assets/1743153040822_286027_khwaahish-inner-view.webp'
+          src='/img/Khwaahish-Store-img.webp'
           alt="brand store"
           height={1250}
           width={1920}

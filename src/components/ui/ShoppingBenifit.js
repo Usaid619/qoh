@@ -2,12 +2,12 @@
 import React from 'react'
 import { FaShoppingCart, FaExchangeAlt, FaVideo, FaStar, FaClipboardList } from "react-icons/fa";
 import { TbCalendarClock } from "react-icons/tb";
-import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
+import { DotButton, useDotButton } from "../../components/ui/EmblaCarouselDotButton";
 import {
   PrevButton,
   NextButton,
   usePrevNextButtons,
-} from "./EmblaCarouselArrowButtons"
+} from "../../components/ui/EmblaCarouselArrowButtons"
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
@@ -40,13 +40,13 @@ const ShoppingBenifit = () => {
   } = usePrevNextButtons(emblaApi);
   return (
 
-    <div className="text-center md:py-12 flex flex-col md:gap-8 gap-4 font-gothic">
+    <div className="text-center w-full md:py-12 flex flex-col md:gap-8 gap-4 font-gothic">
       <h2 className="md:text-[38px] text-[24px] font-gothic  tracking-wide ">SHOPPING BENEFITS</h2>
-      <p className="text-gray-500 md:text-[16px] tracking-wide md:px-[23%] px-[2%]">Apart from a fabulous range of jewellery designs & a premium shopping experience, we strive to be your favourite jewellers with the added benefits for that extra delight.</p>
+      <p className="text-gray-500 md:text-[16px] text-[14px] tracking-wide md:px-[23%] px-[2%]">Apart from a fabulous range of jewellery designs & a premium shopping experience, we strive to be your favourite jewellers with the added benefits for that extra delight.</p>
 
-      <div className="embla  relative mt-2 flex flex-col items-center gap-4 w-full select-none">
-        <PrevButton
-          className="absolute  z-10 top-1/2 -translate-y-1/2 left-14 3xl:left-44 4xl:left-64 md:left-36 h-5 w-5 3xl:h-8 3xl:w-8 4xl:h-10 4xl:w-10"
+      <div className="embla relative mt-2 flex flex-col items-center gap-4 w-full select-none">
+      {/* <PrevButton
+          className="absolute z-10 top-1/2 -translate-y-1/2 left-14 3xl:left-44 4xl:left-64 md:left-36 h-5 w-5 3xl:h-8 3xl:w-8 4xl:h-10 4xl:w-10"
           onClick={onPrevButtonClick}
           disabled={prevBtnDisabled}
         />
@@ -54,25 +54,29 @@ const ShoppingBenifit = () => {
           className="absolute z-10 top-1/2 -translate-y-1/2 right-14 3xl:right-44 4xl:right-64 md:right-36 h-5 w-5 3xl:h-8 3xl:w-8 4xl:h-10 4xl:w-10"
           onClick={onNextButtonClick}
           disabled={nextBtnDisabled}
-        />
-        <div className="embla__viewport border border-gray-200 shadow-md  rounded-full py-5 h-[120px] 3xl:py-12 w-[85%]" ref={emblaRef}>
-          <div className="embla__container object-cover cursor-grab -mx-2">
+        /> */}
+
+        <div className="embla__viewport border border-gray-200 shadow-md  rounded-full py-5 h-[120px] w-[85%]" ref={emblaRef}>
+          <div className="embla__container object-cover cursor-grab -mx-2 ">
             {benefits.map((slide, index) => {
               return (
-                <div key={index} className="flex flex-col gap-2 items-center flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%]">
+                <div key={index} className="flex flex-col gap-2 items-center flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] ">
                   <div className='h-[70%] flex flex-col justify-center items-center'>
-                  {slide.icon}
-                  <p className=' text-2xl'>{slide.title2}</p>
-                  <p className=' text-xl'>{slide.title4}</p>
+                    {slide.icon}
+                    <p className=' text-2xl'>{slide.title2}</p>
+                    <p className=' text-xl'>{slide.title4}</p>
                   </div>
                   <div className='h-[30%] flex flex-col justify-center items-center'>
-                  <p className="4xl:text-2xl 3xl:text-xl text-[14px] text-wrap w-[150px]">{slide.title}</p>
+                    <p className="4xl:text-2xl 3xl:text-xl text-[14px] text-wrap w-[150px]">{slide.title}</p>
                   </div>
                 </div>
               );
             })}
           </div>
         </div>
+
+
+
 
       </div>
 
