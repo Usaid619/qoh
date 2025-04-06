@@ -54,14 +54,14 @@ function Philosophycarousel({ data }) {
 
                             <div className="flex-[0_0_100%]">
                             <div className="flex-[0_0_100%]">
-                                <div className="lg:w-[35%] flex flex-col gap-2 px-[2px] md:pt-8 ">
+                                <div className="lg:w-[35%] flex flex-col gap-1 px-[1px] md:pt-8 ">
                                     {/* <h1 className="md:text-[40px] mt-3 text-[20px] lg:text-[34px] xl:text-[32px] text-center">
                         {data[1].title}
                       </h1> */}
-                                    <p className="mt-2 lg:tracking-[3px] text-center text-[10px] leading-[1.5] text-wrap">
+                                    <p className="mt-2 lg:tracking-[3px] text-center text-[10px] leading-[1.4] text-wrap">
                                         {data[1].description}
                                     </p>
-                                    <p className="leading-[1.5] text-center lg:tracking-[3px] text-[10px] text-wrap">
+                                    <p className="leading-[1.4] text-center lg:tracking-[3px] text-[10px] text-wrap">
                                         {data[1].description2}
                                     </p>
                                 </div>

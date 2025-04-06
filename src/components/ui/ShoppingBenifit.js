@@ -56,8 +56,6 @@ const ShoppingBenifit = () => {
           disabled={nextBtnDisabled}
         /> */}
 
-
-
         <div className="embla__viewport border border-gray-200 shadow-md  rounded-full py-5 h-[120px] w-[85%]" ref={emblaRef}>
           <div className="embla__container object-cover cursor-grab -mx-2 ">
             {benefits.map((slide, index) => {
