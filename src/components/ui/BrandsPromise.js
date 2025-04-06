@@ -53,18 +53,12 @@ const BrandsPromise = () => {
         image: "/assets/promiseicon/1742984055942_325190_Promise-Sec-Icons-1.png",
         title: "BIS Hallmarked",
       },
-      // {
-      //   image: "/assets/promiseicon/1742984154353_95542_Promise-Sec-Icons-2.png",
-      //   title: "Assured time maintanance",
-      // },
+      
       {
         image: "/assets/promiseicon/1742984221431_901608_Promise-Sec-Icons-3.png",
         title: "Life time Exchange",
       },
-      // {
-      //   image: "/assets/promiseicon/1742984273264_14761_Promise-Sec-Icons-4.png",
-      //   title: "Free 1 year warranty",
-      // },
+      
       {
         image: "/assets/promiseicon/1742984342416_505983_Promise-Sec-Icons-5.png",
         title: "Different by Design ",
