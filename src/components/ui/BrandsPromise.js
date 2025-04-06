@@ -166,7 +166,6 @@ const BrandsPromise = () => {
 
             </div>
           </div>
-
           {/* Navigation Buttons */}
           <button
             className="absolute -left-3 md:-left-6 md:top-[65%] top-[50%] -translate-y-1/2"
