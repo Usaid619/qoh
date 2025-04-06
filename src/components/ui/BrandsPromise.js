@@ -108,7 +108,7 @@ const BrandsPromise = () => {
       <div className='md:block hidden w-full'>
         <div className='lg:flex flex flex-col-reverse lg:flex-row w-[90%] mx-auto font-gothic shadow-md border border-gray-200 rounded-[15px]'>
           <div className='lg:w-[35%] flex flex-col px-[23px] gap-2 md:pt-8 md:pb-0 pb-2' >
-            <h1 className='md:text-[36px] text-[24px] text-center'>Curator's Tale</h1>
+            <h1 className='md:text-[36px] text-[24px] text-center'>Curator&apos;s Tale</h1>
             <p className=" lg:tracking-[3px] px-4  text-center md:text-[14px] text-[12px] lg:leading-[1.5] text-wrap">Our brand represents our desire to create exquisite, beautiful and high-quality diamond jewellery that is as special as you.
             </p>
             <p className='mt-4 lg:tracking-[3px] px-4 text-center md:text-[14px] text-[12px] lg:leading-[1.5] text-wrap'>Explore our collection at the Queen of Hearts Galleria and experience a world of Diamond Jewellery, truly Different by Design.</p>
