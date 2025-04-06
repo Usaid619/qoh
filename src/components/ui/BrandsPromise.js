@@ -31,15 +31,12 @@ const BrandsPromise = () => {
     onSelect()
   }, [emblaApi, onSelect])
 
-
-
   const data = [
     {
       image: "/img/fina1.svg",
       title: "Curator's Tale ",
       description: "With two decades of excellence behind Chennai’s most cherished diamond jewellery brand — Khwaahish, we set forth to redefine the meaning of affordable luxury.  ",
       description2: "Queen of Hearts is our latest pursuit — a refined destination for the modern woman to discover jewellery that is precious, aspirational, yet accessible.  ",
-      className: 'md:flex-row'
 
     },
     {
@@ -47,10 +44,7 @@ const BrandsPromise = () => {
       title: "Design Philosophy",
       description: " We celebrate creativity and boldness in design, pushing the boundaries of what jewellery can be. Our design team embraces innovation to create jewellery that feels fresh and exciting-we offer pieces that are versatile, fun and irresistibly chic. ",
       description2: "QOH is where the art of jewellery meets individuality, allowing our customers to discover something they can call their own. ",
-      className: 'md:flex-row-reverse'
-
     },
-
   ]
 
   const data2 = {
