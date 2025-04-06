@@ -46,7 +46,7 @@ const HamburgerMenu = forwardRef(
         })
         setData(newData)
       }
-    },[categories])
+    },[categories,data])
 
     return (
       <div

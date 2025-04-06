@@ -166,7 +166,7 @@ lg:max-w-[55%] px-2
 
       <div className='lg:flex flex flex-col-reverse lg:flex-row w-[90%] mx-auto font-gothic shadow-md border border-gray-200 rounded-[15px]'>
         <div className='lg:w-[35%] flex flex-col md:gap-7 gap-2 px-[23px] md:pt-8 md:pb-0 pb-2' >
-          <h1 className='md:text-[40px] text-[24px] text-center'>Curator's Tale</h1>
+          <h1 className='md:text-[40px] text-[24px] text-center'>Curator&apos;s Tale</h1>
           <p className="lg:tracking-[3px] md:text-start text-center md:text-[14px] text-[12px] lg:leading-[1.5] text-wrap">Our brand represents our desire to create exquisite, beautiful and high-quality diamond jewellery that is as special as you.
           </p>
           <p className='lg:tracking-[3px] md:text-start text-center md:text-[14px] text-[12px] lg:leading-[1.5] text-wrap'>Explore our collection at the Queen of Hearts Galleria and experience a world of Diamond Jewellery, truly Different by Design.</p>
