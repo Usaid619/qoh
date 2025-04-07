@@ -20,7 +20,7 @@ const Hallmarks = () => {
   const pathname = usePathname()
 
   return (
-    <div className={`bg-[#f5f3f3] text-gray-600 flex flex-col items-center gap-4 py-8 w-full `}>
+    <div className={`bg-[#f5f3f3] text-gray-600 flex flex-col items-center gap-4 py-4 w-full `}>
       <span className='max-w-[1280px] 4xl:text-3xl text-center text-[15px] md:text-lg font-normal 3xl:text-[25px]  leading-[1.8] tracking-[1.3px] md:max-w-[80%] px-10'>
         All our jewels are BIS Hallmarked and studded with natural diamonds certified by International Gemmological Institutes. 
       </span>

@@ -12,8 +12,9 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 // import { categories } from "@/src/data/constants";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-const data = [
+const options = [
   // Hamburger
   {
     id: 0,
@@ -30,72 +31,22 @@ const data = [
 
 const HamburgerMenu = forwardRef(
   ({ setHamburgerOpen, hamburgerTimeline }, ref) => {
+    const [data,setData]=useState(options)
     const [openIndex, setOpenIndex] = useState(null);
-    const [categories, setCategories] = useState(data);
+    const {data:categories}=useSelector((state)=>state.category)
 
-    // const getCategories = async () => {
-    //   try {
-    //     const res = await api.get("/store/khw/categories/get-all-categories");
-    //     const data = await res.data;
-    //     const formetedData = data.map((item) => {
-    //       if (item.showInNav) {
-    //         item.link = `/${item.name.replace(/\s+/g, "-").toLowerCase()}`;
-    //         return item;
-    //       }
-    //     });
-    //     setCategories((prevMenu) =>
-    //       prevMenu.map((section) =>
-    //         section.id === 6 ? { ...section, items: formetedData } : section,
-    //       ),
-    //     );
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-
-    // const getCollections = async () => {
-    //   try {
-    //     const res = await api.get("/store/khw/collections/get-all-collections");
-    //     const data = await res.data;
-    //     const collection = data.map((item) => {
-    //       if (item.showInCollection) {
-    //         item.link =
-    //           item.hasHomePage && item.pathOfHomePage
-    //             ? item.pathOfHomePage
-    //             : `/collection/${item.name.replace(/\s+/g, "-").toLowerCase()}`;
-    //         item.name = `${item.name} - ${item.tagline}`;
-    //         return item;
-    //       }
-    //     });
-
-    //     const navItem = data.filter((item) => {
-    //       if (item.showInNav) {
-    //         item.link = item.hasHomePage && item.pathOfHomePage ? item.pathOfHomePage : `/collection/${item.name.replace(/\s+/g, "-").toLowerCase()}`
-    //         return item;
-    //       }
-    //     });
-
-    //     setCategories((prevMenu) => {
-    //       const updatedMenu = prevMenu.map((section) =>
-    //         section.id === 2 ? { ...section, items: collection } : section,
-    //       );
-
-    //       const existingNames = new Set(updatedMenu.map((item) => item.name));
-    //       const uniqueNavItems = navItem.filter(
-    //         (item) => !existingNames.has(item.name),
-    //       );
-
-    //       return [...updatedMenu, ...uniqueNavItems];
-    //     });
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-
-    // useEffect(() => {
-    //   getCategories();
-    //   getCollections();
-    // }, []);
+    useEffect(()=>{
+      if(categories?.length>0){
+        let _data = data
+        const newData = _data.map((obj,i)=>{
+          if(i===0){
+            obj.items = categories
+          }
+          return obj
+        })
+        setData(newData)
+      }
+    },[categories,data])
 
     return (
       <div
@@ -123,15 +74,10 @@ const HamburgerMenu = forwardRef(
             />
           </svg>
 
-          <input
-            className="w-full p-2 text-black"
-            type="search"
-            placeholder="What are you looking for?"
-          />
-        </div>
-
-        <div className="flex flex-col gap-3">
-          {data.map((category, index) => {
+             <input className="w-full p-2 text-black outline-none" type="search" placeholder="What are you looking for?"/>
+          </div>
+         
+         <div className="flex flex-col gap-3">{data.map((category, index) => {
             return (
               <Accordion
                 isOpen={openIndex === index}

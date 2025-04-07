@@ -4,7 +4,10 @@ import HeaderNav from "@/components/Header/HeaderNav";
 import Footer from "@/components/ui/Footer";
 import "./globals.css";
 import localFont from "next/font/local";
-import { useRef,useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
+import { Provider } from "react-redux";
+import appStore from "@/store/store";
+import Get_data from "./GetData";
 
 const centuryGothic = localFont({
   src: "../../public/assets/fonts/CenturyGothic.ttf",
@@ -40,10 +43,14 @@ export default function RootLayout({ children }) {
       <body
         className={`${centuryGothic.variable} ${bigilla.variable} antialiased`}
       >
-        <HeaderNav headerRef={headerRef}
-          isScrolled={isScrolled}/>
-        {children}
-        <Footer/>
+        <Provider store={appStore}>
+          <Get_data>
+            <HeaderNav headerRef={headerRef}
+              isScrolled={isScrolled} />
+            {children}
+            <Footer />
+          </Get_data>
+        </Provider>
       </body>
     </html>
   );

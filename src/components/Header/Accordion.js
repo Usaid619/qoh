@@ -57,7 +57,7 @@ const Accordion = ({
               hamburgerTimeline.current.reverse();
               setHamburgerOpen(false);
             }}
-            href={item?.link || "#"}
+            href={`/${item?.name?.toLowerCase().replaceAll(" ", "-")}` || "#"}
             key={i}
             className="text-sm font-light w-full py-1 px-3 flex items-center leading-[1.6] select-none cursor-pointer gap-4 hover:text-amber-700"
           >

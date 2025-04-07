@@ -1,29 +1,14 @@
+"use client"
 // BrowseByCategories.js
 import React from "react";
 import dynamic from "next/dynamic";
+import { useSelector } from "react-redux";
 // import { landingSlides } from '@/src/data/constants';
 // const DashedText = dynamic(()=> import("@/src/components/ui/DashedText"))
 const BBCCarousel = dynamic(() => import("./BBCCarousel"));
 
 const BrowseByCategories = ({ data }) => {
-  const landingSlides = [
-    {
-      imageUrl: "/assets/images/model-1.png",
-      title: "Diamond Rings",
-    },
-    {
-      imageUrl: "/assets/images/model-2.png",
-      title: "Diamond Earrings",
-    },
-    {
-      imageUrl: "/assets/images/model-3.png",
-      title: "Diamond Necklace",
-    },
-    {
-      imageUrl: "/assets/images/model-1.png",
-      title: "Diamond Bracelets",
-    },
-  ];
+  const {data:categories}=useSelector((state)=>state.category)
   return (
     <div className=" md:-mx-[30px] lg:-mx-[57px] 3xl:-mx-[100px] flex flex-col items-center gap-4 w-full">
       {/* <DashedText text={data?.title} /> */}
@@ -33,7 +18,7 @@ const BrowseByCategories = ({ data }) => {
       <span className="text-[16px] text-center">
         Find the perfect piece for every ocassion!
       </span>
-      <BBCCarousel slides={landingSlides} />
+      <BBCCarousel slides={categories} />
     </div>
   );
 };
