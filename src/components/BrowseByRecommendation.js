@@ -48,31 +48,17 @@ const BrowseByRecommendation = () => {
   }, []);
 
   return (
-    <section className="w-full max-w-7xl mx-auto overflow-hidden">
-      {/* Responsive title */}
-      <h1
-        className="text-center text-2xl lg:text-4xl"
-        style={{
-          width: "100%",
-          margin: "0 auto",
-          marginBottom: "16px",
-        }}
-      >
-        BROWSE BY RECOMMENDATION
-      </h1>
-      {/* Responsive subtitle */}
-      <p
-        className="text-center mb-6 sm:mb-12 text-[13px] lg:text-xl"
-        style={{
-          color: "#5E5E5E",
-          width: "100%",
-          maxWidth: "488px",
-          margin: "0 auto",
-          marginBottom: "16px",
-        }}
-      >
-        Handpicked favourites - Just for you
-      </p>
+    <section className="w-full max-w-7xl mx-auto overflow-hidden py-4 sm:py-6 px-2 sm:px-4 font-gothic">
+      <div className="mb-2 sm:mb-3">
+        <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">
+          BROWSE BY RECOMMENDATION
+        </h2>
+      </div>
+      <div className="text-center mb-6 text-sm sm:text-base md:text-xl">
+        <span className="text-[16px] text-center">
+          Handpicked favourites - Just for you
+        </span>
+      </div>
 
       <div className="relative overflow-hidden p-5 bg-gray-100">
         {loading ? (
