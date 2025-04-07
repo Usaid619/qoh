@@ -115,24 +115,17 @@ const BrowseByStyle = () => {
   );
 
   return (
-    
-
     <section className="w-full max-w-7xl mx-auto overflow-hidden py-4 sm:py-6 px-2 sm:px-4 font-gothic">
       {/* Responsive heading */}
       <div className="mb-2 sm:mb-3">
-        <h1
-          className="text-center text-2xl lg:text-4xl"
-        >
+        <h2 className="uppercase text-2xl lg:text-4xl tracking-wide font-medium text-center">
           BROWSE BY STYLE
-        </h1>
+        </h2>
       </div>
       <div className="text-center mb-6 text-sm sm:text-base md:text-xl">
-        <p
-          className="text-center text-[13px] lg:text-xl" 
-         
-        >
+        <span className="text-[16px] text-center">
           Timeless Classics To Modern Trends, All In One Place!
-        </p>
+        </span>
       </div>
 
       <div className="relative max-w-full mx-auto mb-6 px-1 sm:px-4">
