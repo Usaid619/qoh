@@ -108,11 +108,11 @@ const BrandsPromise = () => {
       </div>
       <div className='md:block hidden'>
         <div className='lg:flex lg:flex-row-reverse flex flex-col-reverse w-[90%] mx-auto font-gothic shadow-md border border-gray-200 rounded-[15px]'>
-          <div className='lg:w-[35%] flex flex-col md:gap-3 gap-1 px-[23px] pt-4 md:pb-0 pb-2' >
+          <div className='lg:w-[35%] flex flex-col md:gap-3 gap-1 px-[18px] py-2 ' >
             <h1 className='md:text-[36px] text-[20px]  lg:text-[34px] xl:text-[32px] text-center'>{data[1].title}</h1>
-            <p className=" lg:tracking-[3px]  text-center md:text-[14px] text-[12px] lg:leading-[1.5] text-wrap">We celebrate creativity and boldness in design, pushing the boundaries of what jewellery can be. Our design team embraces innovation to create jewellery that feels fresh and exciting – we offer pieces that are versatile, fun and irresistibly chic.
+            <p className=" lg:tracking-[2px]  text-center md:text-[14px] text-[12px] lg:leading-[1.4] text-wrap">We celebrate creativity and boldness in design, pushing the boundaries of what jewellery can be. Our design team embraces innovation to create jewellery that feels fresh and exciting – we offer pieces that are versatile, fun and irresistibly chic.
             </p>
-            <p className='lg:leading-[1.5] text-center lg:tracking-[3px] md:text-[14px] text-[12px] text-wrap'>QOH is where the art of jewellery meets individuality, allowing our customers to discover something they can call their own.</p>
+            <p className='lg:leading-[1.4] text-center lg:tracking-[2px] md:text-[14px] text-[12px] text-wrap'>QOH is where the art of jewellery meets individuality, allowing our customers to discover something they can call their own.</p>
           </div>
           <div className="lg:w-[64%] lg:py-[15px] py-4 md:px-0 px-4 " >
             <Image src={data[1].image} alt="Curator's Tale" width="1" height='1' className="md:object-cover object-center w-full md:h-auto  rounded-[15px] " />
